@@ -50,7 +50,7 @@ public class WebHandler implements HttpHandler {
                     break;
                 }
             }
-
+            System.out.println("Received message: " + message); // Debug log
             if (!message.isEmpty()) {
                 client.sendMessage(message, false);
             }
