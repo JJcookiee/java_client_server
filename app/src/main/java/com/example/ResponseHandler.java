@@ -20,9 +20,14 @@ public class ResponseHandler implements Runnable {
                 Thread.sleep(1000);
                 response = client.getPage();
 
-                if (response.equals(lastResponse) || response == null) {
-                    break;
+                if (response == null || response.isEmpty()) {
+                    continue;
                 }
+
+                if (response.equals(lastResponse)) {
+                    continue;
+                }
+
                 String jsonBody;
                 if (response.startsWith("{")) {
                     jsonBody = response;
@@ -31,8 +36,12 @@ public class ResponseHandler implements Runnable {
                     jsonBody = parts.length > 1 ? parts[1].trim() : "";
                 }
                 
+                if (jsonBody.isEmpty() || !jsonBody.startsWith("{")) {
+                    System.out.println("Skipping non-JSON response: " + response.substring(0, Math.min(50, response.length())));
+                    continue;
+                }
+                
                 lastResponse = response;
-                response = null;
                 
                 JSONObject jsonResponse = new JSONObject(jsonBody);
                 System.out.println("json response: "+jsonResponse.toString());//debug

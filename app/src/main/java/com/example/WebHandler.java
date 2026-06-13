@@ -28,12 +28,12 @@ public class WebHandler implements HttpHandler {
         server.createContext("/", new WebHandler(port, config.getPage(), client));
         server.setExecutor(null);
         server.start();
-        System.out.println("Server started at http://localhost:" + port + "/");
-        try {
-            java.awt.Desktop.getDesktop().browse(new java.net.URI("http://localhost:" + port));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("Web UI started at http://localhost:" + port + "/");
+        // try {
+        //     java.awt.Desktop.getDesktop().browse(new java.net.URI("http://localhost:" + port));
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
     }
 
     @Override
@@ -55,12 +55,9 @@ public class WebHandler implements HttpHandler {
                 client.sendMessage(message, false);
             }
 
-            String response = "Message sent!";
-            byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
-            exchange.sendResponseHeaders(200, bytes.length);
-            try (OutputStream out = exchange.getResponseBody()) {
-                out.write(bytes);
-            }
+            exchange.getResponseHeaders().add("Location", "/");
+            exchange.sendResponseHeaders(302, -1);
+            exchange.close();
         } else {
             String response = this.config.getPage();
             response += "\n\n<form method='POST' action='/'>" +
@@ -81,7 +78,7 @@ public class WebHandler implements HttpHandler {
         page.append("<!DOCTYPE html>");
         page.append("<html>");
         page.append("<head><title>Messages for " + username + "</title></head>");
-        page.append("<body><h1>Messages for " + username + "</h1>");
+        page.append("<body><h4>Messages for " + username + "</h4>");
 
         if (jsonResponse.getJSONArray("messages").isEmpty()) {
             page.append("<p>No messages yet</p>");

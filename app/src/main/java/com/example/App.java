@@ -23,8 +23,8 @@ public final class App {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                System.out.println("\nServer started on port: " + port);
             }
-            System.out.println("\nServer started on port: " + port);
         } else {
             try {
                 String username = getUser(scanner);

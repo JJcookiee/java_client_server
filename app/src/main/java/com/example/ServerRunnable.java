@@ -46,12 +46,8 @@ public class ServerRunnable implements Runnable {
                 String textMessage = new String(buffer, 0, bytesRead).trim();
                 LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
 
-                String responseBody = "";
-                StringBuilder page = new StringBuilder();
-
-                String contentType = "";
-
                 if(textMessage.startsWith("GET ") || textMessage.startsWith("POST ")) {
+                    StringBuilder page = new StringBuilder();
                     page.append("<html><body><p>Server is running.</p></body></html>");
                     if (messageCache.isEmpty()) {
                         page.append("<p>No messages yet.</p");
@@ -62,8 +58,15 @@ public class ServerRunnable implements Runnable {
                         }
                         page.append("</ul>");
                     }
-                    responseBody = page.toString();
-                    contentType = "text/html; charset=UTF-8";
+                    String responseBody = page.toString();
+                    byte[] body = responseBody.getBytes();
+                    output.write(("HTTP/1.1 200 OK\r\n" +
+                                "Content-Type: text/html; charset=UTF-8\r\n" +
+                                "Content-Length: " + body.length + "\r\n" +
+                                "Connection: keep-alive\r\n" +
+                                "\r\n").getBytes());
+                    output.write(body);
+                    output.flush();
                 } else {
                     String[] parts = textMessage.split(": ", 2);
                     String username = parts[0];
@@ -84,38 +87,37 @@ public class ServerRunnable implements Runnable {
                     ArrayList<Message> clientCache = getClientCache(reciever);
                     JSONObject jsonResponse = new JSONObject();
                     jsonResponse.put("messages", clientCache);
-                    responseBody = jsonResponse.toString();
-                    contentType = "application/json";
-                }
-
-                byte[] body = responseBody.getBytes();
-                synchronized(clientOutputStreams) {
-                    try {
-                        for (OutputStream out : clientOutputStreams) {
-                        out.write(("HTTP/1.1 200 OK\r\n" +
-                                    "Content-Type: " + contentType + "\r\n" +
-                                    "Content-Length: " + body.length + "\r\n" +
-                                    "Connection: keep-alive\r\n" +
-                                    "\r\n").getBytes());
-                        out.write(body);
-                        out.flush();
-                    }
-                    } catch (Exception e) {
-                        System.out.println("Broadcast error: ");
-                        e.printStackTrace();
-                        clientOutputStreams.remove(output);
-                    }
+                    String responseBody = jsonResponse.toString();
+                    byte[] body = responseBody.getBytes();
                     
+                    synchronized(clientOutputStreams) {
+                        ArrayList<OutputStream> streamsToRemove = new ArrayList<>();
+                        for (OutputStream out : clientOutputStreams) {
+                            try {
+                                out.write(("HTTP/1.1 200 OK\r\n" +
+                                            "Content-Type: application/json\r\n" +
+                                            "Content-Length: " + body.length + "\r\n" +
+                                            "Connection: keep-alive\r\n" +
+                                            "\r\n").getBytes());
+                                out.write(body);
+                                out.flush();
+                            } catch (IOException e) {
+                                streamsToRemove.add(out);
+                            }
+                        }
+                        for (OutputStream out : streamsToRemove) {
+                            clientOutputStreams.remove(out);
+                        }
+                    }
                 }
-                System.out.println(textMessage);
-                System.out.println("Sent response: " + responseBody);
+                // System.out.println(textMessage);
+                // System.out.println("Sent response: " + responseBody);
             }
             
             input.close();
             output.close();
             clientSocket.close();
         } catch (IOException e) {
-            //report exception somewhere.
             e.printStackTrace();
         }
     }
