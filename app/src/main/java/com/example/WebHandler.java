@@ -79,16 +79,43 @@ public class WebHandler implements HttpHandler {
         page.append("<html>");
         page.append("<head><title>Messages for " + username + "</title></head>");
         page.append("<body><h4>Messages for " + username + "</h4>");
+        page.append("<div id='messages'>");
 
         if (jsonResponse.getJSONArray("messages").isEmpty()) {
             page.append("<p>No messages yet</p>");
         } else {
             for (Object msg : jsonResponse.getJSONArray("messages")) {
                 JSONObject message = (JSONObject) msg;
-                page.append("<a>[" + message.getString("timestamp") + "]" + message.getString("username") + "#" + message.getString("tag") + ": " + message.getString("content") + "</a><br>");
-                System.out.println(page.toString());//debug
+                page.append(
+                    "<a>[" + 
+                    message.getString("timestamp") + "]" + 
+                    message.getString("username") + "#" + 
+                    message.getString("tag") + ": " + 
+                    message.getString("content") + 
+                    "</a><br>"
+                );
             }
         }
+
+        page.append("""
+        <script>
+        setInterval(() => {
+            fetch("/")
+                .then(res => res.text())
+                .then(html => {
+                    const doc = new DOMParser()
+                        .parseFromString(html, "text/html");
+
+                    const newMessages = doc.getElementById("messages");
+                    const currentMessages = document.getElementById("messages");
+
+                    if (newMessages && currentMessages) {
+                        currentMessages.innerHTML = newMessages.innerHTML;
+                    }
+                });
+        }, 1000);
+        </script>
+        """);
 
         page.append("</body>");
         page.append("</html>");
