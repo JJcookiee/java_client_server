@@ -38,6 +38,32 @@ public class WebHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        String path = exchange.getRequestURI().getPath();
+
+        if (path.equals("/messages")) {
+
+            String page = config.getPage();
+
+            int start = page.indexOf("<div id='messages'>");
+            int end = page.indexOf("</div>", start);
+
+            String messagesOnly = "";
+
+            if (start != -1 && end != -1) {
+                messagesOnly = page.substring(start + 18, end);
+            }
+
+            byte[] bytes = messagesOnly.getBytes();
+
+            exchange.getResponseHeaders().add("Content-Type", "text/html");
+            exchange.sendResponseHeaders(200, bytes.length);
+
+            OutputStream out = exchange.getResponseBody();
+            out.write(bytes);
+            out.close();
+            return;
+        }
+
         String method = exchange.getRequestMethod();
         if (method.equalsIgnoreCase("POST")) {
             String body = new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
@@ -99,21 +125,22 @@ public class WebHandler implements HttpHandler {
 
         page.append("""
         <script>
-        setInterval(() => {
-            fetch("/")
-                .then(res => res.text())
-                .then(html => {
-                    const doc = new DOMParser()
-                        .parseFromString(html, "text/html");
+        async function updateMessages() {
+            try {
+                const res = await fetch("/messages");
+                const html = await res.text();
 
-                    const newMessages = doc.getElementById("messages");
-                    const currentMessages = document.getElementById("messages");
+                document.getElementById("messages").innerHTML =
+                    new DOMParser()
+                        .parseFromString(html, "text/html")
+                        .getElementById("messages")
+                        .innerHTML;
+            } catch (e) {
+                console.log("update failed", e);
+            }
+        }
 
-                    if (newMessages && currentMessages) {
-                        currentMessages.innerHTML = newMessages.innerHTML;
-                    }
-                });
-        }, 1000);
+        setInterval(updateMessages, 1000);
         </script>
         """);
 

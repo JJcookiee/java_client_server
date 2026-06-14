@@ -25,6 +25,10 @@ public class Client {
         this.scanner = scanner;
     }
 
+    public String getSocketAddress() {
+        return (toServer.getInetAddress().toString() + ":" + toServer.getPort());
+    }
+
     public void run() {
         synchronized(this) {
             this.runningThread = Thread.currentThread();

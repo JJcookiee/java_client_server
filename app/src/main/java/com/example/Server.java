@@ -17,6 +17,7 @@ public class Server {
     protected ArrayList<Message> messageCache = new ArrayList<>();
     protected ArrayList<String> clientTags = new ArrayList<>();
     protected ArrayList<OutputStream> clientOutputStreams = new ArrayList<>();
+    public ServerLog serverLog = new ServerLog("", new ArrayList<>(), new ArrayList<>());
 
     public Server(int port) {
         this.serverPort = port;

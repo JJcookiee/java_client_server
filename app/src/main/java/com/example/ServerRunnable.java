@@ -73,16 +73,9 @@ public class ServerRunnable implements Runnable {
                     String[] messageParts = parts[1].split("````", 2);
                     String reciever = messageParts[1];
                     String content = messageParts.length > 1 ? messageParts[0] : "";
-                    messageCache.add(
-                        new Message(
-                            content,
-                            username,
-                            clientTag.toString(),
-                            time.toString(),
-                            Integer.toString(clientSocket.getPort()),
-                            clientSocket.getInetAddress().toString(),
-                            reciever
-                        ));//most of this stuff is useless but we can log it i guess?
+                    Message newMessage = new Message(content, username, clientTag.toString(), time.toString(), Integer.toString(clientSocket.getPort()), clientSocket.getInetAddress().toString(), reciever);
+                    messageCache.add(newMessage);
+                    serverLog.addMessage(newMessage);
                     System.out.println("message cache: " + messageCache.toString());//debug
                     ArrayList<Message> clientCache = getClientCache(reciever);
                     JSONObject jsonResponse = new JSONObject();
