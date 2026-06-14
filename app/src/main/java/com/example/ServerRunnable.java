@@ -16,12 +16,14 @@ public class ServerRunnable implements Runnable {
     protected ArrayList<String> clientTags = null;
     protected String clientTag = "0000";
     protected ArrayList<OutputStream> clientOutputStreams = null;
+    protected ServerLog serverLog = null;
 
-    public ServerRunnable(Socket clientSocket, ArrayList<Message> messageCache, ArrayList<String> clientTags, ArrayList<OutputStream> clientOutputStreams) {
+    public ServerRunnable(Socket clientSocket, ArrayList<Message> messageCache, ArrayList<String> clientTags, ArrayList<OutputStream> clientOutputStreams, ServerLog serverLog) {
         this.clientSocket = clientSocket;
         this.messageCache = messageCache;
         this.clientTags = clientTags;
         this.clientOutputStreams = clientOutputStreams;
+        this.serverLog = serverLog;
     }
 
     public void run() {

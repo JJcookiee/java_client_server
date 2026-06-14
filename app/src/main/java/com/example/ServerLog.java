@@ -1,19 +1,25 @@
 package com.example;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ServerLog {
     protected String timestamp;
-    protected ArrayList<Client> ClientList;
+    protected List<Client> ClientList = new ArrayList<>();
+    protected Map<String, List<Message>> ActiveClients = new HashMap<>();
     protected ArrayList<Message> messageHistory;
+    protected ArrayList<Socket> clientSockets;
 
-    public ServerLog(String timestamp, ArrayList<Client> ClientList, ArrayList<Message> messageHistory) {
+    public ServerLog(String timestamp, ArrayList<Message> messageHistory, ArrayList<Socket> clientSockets) {
         this.timestamp = timestamp;
-        this.ClientList = ClientList;
         this.messageHistory = messageHistory;
+        this.clientSockets = clientSockets;
     }
 
     protected String getTimestamp() { return timestamp; }
-    protected ArrayList<Client> getClientList() { return ClientList; }
+    protected Map<String, List<Message>> getActiveClients() { return ActiveClients; }
     protected ArrayList<Message> getMessageHistory() { return messageHistory; }
 
     protected void setTimestamp(String timestamp) { this.timestamp = timestamp; }
@@ -21,42 +27,56 @@ public class ServerLog {
     protected void addMessage(Message message) { this.messageHistory.add(message); }
 
     public void sortClients() {
+        ActiveClients.clear();
         for (Message msg : messageHistory) {
-            if (client.getSocketAddress() .equals(msg.getIp() + ":" + msg.getPort())) {
-                active = true;
-                ActiveClients.add(client.getUsername() + "#" + msg.getTag());
-                break;
-            }
-        }
+            String socketAddress = msg.getIp() + ":" + msg.getPort();
+            ActiveClients
+                .computeIfAbsent(socketAddress, k -> new ArrayList<>())
+                .add(msg);
+        }   
     }
 
     public String getHTML() {
+        sortClients();
         StringBuilder html = new StringBuilder();
         html.append("<p>Timestamp: ").append(timestamp).append("</p>");
-        
-        html.append("<h2>Clients</h2>");
-        if (ClientList.isEmpty()) {
-            html.append("<p>No clients connected.</p>");
-        } else {
+        html.append("<p>Number of Active Clients: ").append(ActiveClients.size()).append("</p>");
+        html.append("<h2>Active Clients</h2>");
+        html.append("<ul>");
+        for (Map.Entry<String, List<Message>> entry : ActiveClients.entrySet()) {
+            html.append("<li>").append(entry.getKey()).append("</li>");
             html.append("<ul>");
-            for (Client client : ClientList) {
-                html.append("<li>").append(client.getUsername()).append("#").append(client.getTag()).append("</li>");
+            for (Message msg : entry.getValue()) {
+                html.append("<li>").append(msg.toString()).append("</li>");
             }
             html.append("</ul>");
         }
-
+        html.append("</ul>");
         html.append("<h2>Message History</h2>");
-        if (messageHistory.isEmpty()) {
-            html.append("<p>No messages yet.</p>");
-        } else {
-            html.append("<ul>");
-            for (Message msg : messageHistory) {
-                html.append("<li>[").append(msg.getTimestamp()).append("] ")
-                    .append(msg.getUsername()).append("#").append(msg.getTag())
-                    .append(": ").append(msg.getContent()).append("</li>");
-            }
-            html.append("</ul>");
+        html.append("<ul>");
+        for (Message msg : messageHistory) {
+            html.append("<li>").append(msg.toString()).append("</li>");
         }
+        html.append("</ul>");
         return html.toString();
+    }
+
+    public String getString() {
+        sortClients();
+        StringBuilder str = new StringBuilder();
+        str.append("Timestamp: ").append(timestamp).append("\n");
+        str.append("Number of Active Clients: ").append(ActiveClients.size()).append("\n");
+        str.append("Active Clients:\n");
+        for (Map.Entry<String, List<Message>> entry : ActiveClients.entrySet()) {
+            str.append(entry.getKey()).append("\n");
+            for (Message msg : entry.getValue()) {
+                str.append("  ").append(msg.toString()).append("\n");
+            }
+        }
+        str.append("Message History:\n");
+        for (Message msg : messageHistory) {
+            str.append(msg.toString()).append("\n");
+        }
+        return str.toString();
     }
 }

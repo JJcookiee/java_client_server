@@ -17,7 +17,8 @@ public class Server {
     protected ArrayList<Message> messageCache = new ArrayList<>();
     protected ArrayList<String> clientTags = new ArrayList<>();
     protected ArrayList<OutputStream> clientOutputStreams = new ArrayList<>();
-    public ServerLog serverLog = new ServerLog("", new ArrayList<>(), new ArrayList<>());
+    protected ArrayList<Socket> clientSockets = new ArrayList<>();
+    protected ServerLog serverLog = new ServerLog(java.time.LocalTime.now().toString(), messageCache, clientSockets);
 
     public Server(int port) {
         this.serverPort = port;
@@ -44,7 +45,7 @@ public class Server {
             
             this.threadPool.execute(
                 new ServerRunnable(
-                    clientSocket, messageCache, clientTags, clientOutputStreams));
+                    clientSocket, messageCache, clientTags, clientOutputStreams, serverLog));
         }
         this.threadPool.shutdown();
         System.out.println("Server Stopped.") ;
