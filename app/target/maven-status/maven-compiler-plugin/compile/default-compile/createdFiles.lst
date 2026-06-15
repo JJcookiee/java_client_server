@@ -7,3 +7,4 @@ com\example\InputHandler.class
 com\example\Server.class
 com\example\PageConfig.class
 com\example\ResponseHandler.class
+com\example\ServerLog.class

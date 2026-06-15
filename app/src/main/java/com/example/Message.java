@@ -26,4 +26,9 @@ public class Message {
     public String getPort() { return port; }
     public String getIp() { return ip; }
     public String getReciever() { return reciever; }
+
+    @Override
+    public String toString() {
+        return username + "#" + tag + " [" + timestamp + "] (" + ip + ":" + port + ") -> #" + reciever + ": " + content;
+    }
 }

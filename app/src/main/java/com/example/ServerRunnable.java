@@ -50,16 +50,10 @@ public class ServerRunnable implements Runnable {
 
                 if(textMessage.startsWith("GET ") || textMessage.startsWith("POST ")) {
                     StringBuilder page = new StringBuilder();
-                    page.append("<html><body><p>Server is running.</p></body></html>");
-                    if (messageCache.isEmpty()) {
-                        page.append("<p>No messages yet.</p");
-                    } else {
-                        page.append("<p>Message history:</p><ul>");
-                        for (Message msg : messageCache) {
-                            page.append("<li>[" + msg.timestamp + "]" + msg.username + "#" + msg.tag + ": " + msg.content + "</li>");
-                        }
-                        page.append("</ul>");
-                    }
+                    page.append("<html><body>");
+                    page.append("<p>Server is running.</p>");
+                    page.append(serverLog.getHTML());
+                    page.append("</body></html>");
                     String responseBody = page.toString();
                     byte[] body = responseBody.getBytes();
                     output.write(("HTTP/1.1 200 OK\r\n" +
@@ -75,9 +69,15 @@ public class ServerRunnable implements Runnable {
                     String[] messageParts = parts[1].split("````", 2);
                     String reciever = messageParts[1];
                     String content = messageParts.length > 1 ? messageParts[0] : "";
-                    Message newMessage = new Message(content, username, clientTag.toString(), time.toString(), Integer.toString(clientSocket.getPort()), clientSocket.getInetAddress().toString(), reciever);
+                    Message newMessage = new Message(
+                        content,
+                        username, 
+                        clientTag.toString(), 
+                        time.toString(), 
+                        Integer.toString(clientSocket.getPort()), 
+                        clientSocket.getInetAddress().toString(), 
+                        reciever);
                     messageCache.add(newMessage);
-                    serverLog.addMessage(newMessage);
                     System.out.println("message cache: " + messageCache.toString());//debug
                     ArrayList<Message> clientCache = getClientCache(reciever);
                     JSONObject jsonResponse = new JSONObject();

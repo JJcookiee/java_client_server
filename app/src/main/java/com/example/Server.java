@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,7 +19,7 @@ public class Server {
     protected ArrayList<String> clientTags = new ArrayList<>();
     protected ArrayList<OutputStream> clientOutputStreams = new ArrayList<>();
     protected ArrayList<Socket> clientSockets = new ArrayList<>();
-    protected ServerLog serverLog = new ServerLog(java.time.LocalTime.now().toString(), messageCache, clientSockets);
+    protected ServerLog serverLog = null;
 
     public Server(int port) {
         this.serverPort = port;
@@ -34,6 +35,7 @@ public class Server {
             Socket clientSocket = null;
             try {
                 clientSocket = this.serverSocket.accept();
+                clientSockets.add(clientSocket);
             } catch (IOException e) {
                 if(isStopped()) {
                     System.out.println("Server Stopped.") ;
@@ -43,6 +45,9 @@ public class Server {
                     "Error accepting client connection", e);
             }
             
+            LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+            serverLog = new ServerLog(time.toString(), messageCache, clientSockets);
+
             this.threadPool.execute(
                 new ServerRunnable(
                     clientSocket, messageCache, clientTags, clientOutputStreams, serverLog));

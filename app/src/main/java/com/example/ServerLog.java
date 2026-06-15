@@ -1,5 +1,7 @@
 package com.example;
 import java.net.Socket;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +26,6 @@ public class ServerLog {
 
     protected void setTimestamp(String timestamp) { this.timestamp = timestamp; }
     protected void addClient(Client client) { this.ClientList.add(client); }
-    protected void addMessage(Message message) { this.messageHistory.add(message); }
 
     public void sortClients() {
         ActiveClients.clear();
@@ -41,18 +42,15 @@ public class ServerLog {
         StringBuilder html = new StringBuilder();
         html.append("<p>Timestamp: ").append(timestamp).append("</p>");
         html.append("<p>Number of Active Clients: ").append(ActiveClients.size()).append("</p>");
-        html.append("<h2>Active Clients</h2>");
+        html.append("<br><p>Active Clients</p>");
         html.append("<ul>");
         for (Map.Entry<String, List<Message>> entry : ActiveClients.entrySet()) {
-            html.append("<li>").append(entry.getKey()).append("</li>");
-            html.append("<ul>");
-            for (Message msg : entry.getValue()) {
-                html.append("<li>").append(msg.toString()).append("</li>");
-            }
-            html.append("</ul>");
+            Message msg = entry.getValue().get(entry.getValue().size() - 1);
+            String nameTag = msg.getUsername() + "#" + msg.getTag();
+            html.append("<li>").append(entry.getKey()).append(nameTag).append("</li>");
         }
         html.append("</ul>");
-        html.append("<h2>Message History</h2>");
+        html.append("<br><p>Message History</p>");
         html.append("<ul>");
         for (Message msg : messageHistory) {
             html.append("<li>").append(msg.toString()).append("</li>");
@@ -64,9 +62,13 @@ public class ServerLog {
     public String getString() {
         sortClients();
         StringBuilder str = new StringBuilder();
-        str.append("Timestamp: ").append(timestamp).append("\n");
+        LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+        Duration upTime = Duration.between(LocalTime.parse(timestamp), time).truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+        str.append("Server Log\n");
+        str.append("Server start: ").append(timestamp).append("\n");
+        str.append("Up time: ").append(upTime.toString()).append("\n");
         str.append("Number of Active Clients: ").append(ActiveClients.size()).append("\n");
-        str.append("Active Clients:\n");
+        str.append("Active Client logs:\n");
         for (Map.Entry<String, List<Message>> entry : ActiveClients.entrySet()) {
             str.append(entry.getKey()).append("\n");
             for (Message msg : entry.getValue()) {
