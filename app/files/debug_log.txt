@@ -32,3 +32,157 @@ Logger started at: 09:11
 message cache: [anonymous#3886 [09:11] (/127.0.0.1:58805) -> #0000: ****** man]
 15-06-2026 09:11:15: 
 json response: {"messages":[{"port":"58805","reciever":"0000","ip":"/127.0.0.1","tag":"3886","content":"****** man","timestamp":"09:11","username":"anonymous"}]}
+15-06-2026 09:35:19: 
+Connection reset
+15-06-2026 09:35:37: 
+Logger started at: 09:35
+15-06-2026 09:35:52: 
+message cache: [anonymous#4211 [09:35] (/127.0.0.1:63341) -> #0000: test one million]
+15-06-2026 09:35:53: 
+json response: {"messages":[{"reciever":"0000","port":"63341","ip":"/127.0.0.1","tag":"4211","content":"test one million","timestamp":"09:35","username":"anonymous"}]}
+15-06-2026 09:40:12: 
+Connection reset
+15-06-2026 09:41:23: 
+Logger started at: 09:41
+15-06-2026 09:41:23: 
+Scheduler started at: 15-06-2026 09:41:23
+15-06-2026 09:41:23: 
+Logging
+15-06-2026 09:41:33: 
+message cache: [anonymous#2020 [09:41] (/127.0.0.1:49678) -> #0000: test one million and one]
+15-06-2026 09:41:33: 
+json response: {"messages":[{"reciever":"0000","port":"49678","ip":"/127.0.0.1","tag":"2020","content":"test one million and one","username":"anonymous","timestamp":"09:41"}]}
+15-06-2026 09:44:41: 
+Connection reset
+15-06-2026 09:45:00: 
+Logger started at: 09:45
+15-06-2026 09:45:00: 
+Scheduler started at: 15-06-2026 09:45:00
+15-06-2026 09:45:00: 
+Logging
+15-06-2026 09:46:55: 
+Logger started at: 09:46
+15-06-2026 09:46:55: 
+Scheduler started at: 15-06-2026 09:46:55
+15-06-2026 09:46:55: 
+Logging
+15-06-2026 09:50:40: 
+Logger started at: 09:50
+15-06-2026 09:50:40: 
+Scheduler started at: 15-06-2026 09:50:40
+15-06-2026 09:50:40: 
+Logging
+15-06-2026 09:59:02: 
+Logger started at: 09:59
+15-06-2026 09:59:02: 
+Scheduler started at: 15-06-2026 09:59:02
+15-06-2026 09:59:02: 
+Logging
+15-06-2026 10:00:44: 
+Logger started at: 10:00
+15-06-2026 10:00:44: 
+Scheduler started at: 15-06-2026 10:00:44
+15-06-2026 10:00:44: 
+Logging
+15-06-2026 10:02:51: 
+Logger started at: 10:02
+15-06-2026 10:02:51: 
+Scheduler started at: 15-06-2026 10:02:51
+15-06-2026 10:02:51: 
+Logging
+15-06-2026 10:08:33: 
+Logger started at: 10:08
+15-06-2026 10:08:33: 
+Scheduler started at: 15-06-2026 10:08:32
+15-06-2026 10:08:33: 
+Logging
+15-06-2026 10:10:03: 
+Logger started at: 10:10
+15-06-2026 10:10:03: 
+Scheduler started at: 15-06-2026 10:10:03
+15-06-2026 10:10:03: 
+Logging
+15-06-2026 10:17:30: 
+Logger started at: 10:17
+15-06-2026 10:17:30: 
+Scheduler started at: 15-06-2026 10:17:30
+15-06-2026 10:17:30: 
+Logging
+15-06-2026 10:17:30: 
+Active clients sorted
+15-06-2026 10:17:30: 
+client sorted
+15-06-2026 10:17:30: 
+str 1: Server Log
+Server start: 10:17
+Up time: PT0S
+Number of Active Clients: 0
+Active Client logs:
+
+15-06-2026 10:17:30: 
+str 2: Server Log
+Server start: 10:17
+Up time: PT0S
+Number of Active Clients: 0
+Active Client logs:
+
+15-06-2026 10:17:30: 
+str 3: Server Log
+Server start: 10:17
+Up time: PT0S
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+15-06-2026 10:17:30: 
+Server log content: Server Log
+Server start: 10:17
+Up time: PT0S
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+15-06-2026 10:17:30: 
+Error saving log file: The filename, directory name, or volume label syntax is incorrect
+15-06-2026 10:17:30: 
+Server log saved at: 15-06-2026 10:17:30
+15-06-2026 10:22:30: 
+Logging
+15-06-2026 10:22:30: 
+Active clients sorted
+15-06-2026 10:22:30: 
+client sorted
+15-06-2026 10:22:30: 
+str 1: Server Log
+Server start: 10:17
+Up time: PT5M
+Number of Active Clients: 0
+Active Client logs:
+
+15-06-2026 10:22:30: 
+str 2: Server Log
+Server start: 10:17
+Up time: PT5M
+Number of Active Clients: 0
+Active Client logs:
+
+15-06-2026 10:22:30: 
+str 3: Server Log
+Server start: 10:17
+Up time: PT5M
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+15-06-2026 10:22:30: 
+Server log content: Server Log
+Server start: 10:17
+Up time: PT5M
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+15-06-2026 10:22:30: 
+Error saving log file: The filename, directory name, or volume label syntax is incorrect
+15-06-2026 10:22:30: 
+Server log saved at: 15-06-2026 10:22:30

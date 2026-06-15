@@ -33,7 +33,7 @@ final class FileHandler {
     }
 
     static void Save(String s) {
-        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm_ss"));
         int counter = 0;
         File newFile = new File("files/server_log_" + time + ".txt");
         while (newFile.exists()) {
