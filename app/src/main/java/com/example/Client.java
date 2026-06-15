@@ -18,6 +18,7 @@ public class Client {
     protected Scanner scanner;
     protected Thread runningThread = null;
     protected ExecutorService threadPool = Executors.newFixedThreadPool(2);
+    protected WordFilter wordFilter = new WordFilter();
 
     Client(String serverSocket, int port, String username, Scanner scanner) throws IOException {
         toServer = new Socket(serverSocket, port);
@@ -79,6 +80,7 @@ public class Client {
     }
 
     public void checkMessage(String message) {
+        message = wordFilter.censorMessage(message);
         if (message.startsWith("/")) {
             String[] parts = message.split(" ");
             switch (parts[0]) {
