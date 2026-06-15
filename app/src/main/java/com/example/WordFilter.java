@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class WordFilter {
     private Set<String> bannedWords = new HashSet<>();
@@ -21,12 +22,14 @@ public class WordFilter {
     }
 
     public String censorMessage(String m) {
+        String cm = m;
         for (String bannedWord : bannedWords) {
             if (m.toLowerCase().contains(bannedWord)) {
-                int length = bannedWord.length();
-                m = m.replaceAll("[^a-zA-Z]" + bannedWord, "*".repeat(length));
+                String regex = "(?i)\\b" + Pattern.quote(bannedWord) + "\\b";
+                String censor = "*".repeat(bannedWord.length());
+                cm = cm.replaceAll(regex, censor);
             }
         }
-        return m;
+        return cm;
     }
 }
