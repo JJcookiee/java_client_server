@@ -20,6 +20,7 @@ public class Server {
     protected ArrayList<OutputStream> clientOutputStreams = new ArrayList<>();
     protected ArrayList<Socket> clientSockets = new ArrayList<>();
     protected ServerLog serverLog = null;
+    protected Logger logger = null;
 
     public Server(int port) {
         this.serverPort = port;
@@ -30,7 +31,10 @@ public class Server {
             this.runningThread = Thread.currentThread();
         }
         openServerSocket();
-        Logger logger = new Logger(serverLog);
+
+        LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+        serverLog = new ServerLog(time.toString(), messageCache, clientSockets);
+        logger = new Logger(serverLog);
         logger.startLogging();
 
         while(! isStopped()){
@@ -46,9 +50,6 @@ public class Server {
                 throw new RuntimeException(
                     "Error accepting client connection", e);
             }
-            
-            LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
-            serverLog = new ServerLog(time.toString(), messageCache, clientSockets);
 
             this.threadPool.execute(
                 new ServerRunnable(

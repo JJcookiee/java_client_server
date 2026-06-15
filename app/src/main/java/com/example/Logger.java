@@ -12,15 +12,22 @@ public class Logger {
     }
 
     public void startLogging() {
-        scheduler.scheduleAtFixedRate(() -> {
-            String s = serverlog.getString();
-            FileHandler.Save(s);
-            FileHandler.Update(s);
-            FileHandler.Debug("Server log saved at: " + serverlog.getTimestamp());
-        }, 0, 5, TimeUnit.MINUTES);
+        FileHandler.Debug("Logger started at: " + serverlog.getTimestamp());
+        try {
+            scheduler.scheduleAtFixedRate(() -> {
+                String s = serverlog.getString();
+                FileHandler.Save(s);
+                FileHandler.Update(s);
+                FileHandler.Debug("Server log saved at: " + serverlog.getTimestamp());
+            }, 0, 5, TimeUnit.MINUTES);
+        } catch (Exception e) {
+            FileHandler.Debug("Error in logger: " + e.getMessage());
+        }
+        
     }
 
     public void stopLogging() {
+        FileHandler.Debug("Logger stopped at: " + serverlog.getTimestamp());
         scheduler.shutdown();
     }
 }

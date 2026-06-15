@@ -1,2 +1,22 @@
 07:39: 
 Could not load banned words: banned_words.txt (The system cannot find the file specified)
+15-06-2026 08:31:08: 
+json response: {"messages":[{"reciever":"0000","port":"55681","ip":"/127.0.0.1","tag":"3111","content":"hi","username":"anonymous","timestamp":"08:31"}]}
+15-06-2026 08:41:21: 
+Connection reset
+15-06-2026 08:42:47: 
+Cannot invoke "com.example.ServerLog.getTimestamp()" because "this.serverlog" is null
+15-06-2026 08:43:11: 
+Cannot invoke "com.example.ServerLog.getTimestamp()" because "this.serverlog" is null
+15-06-2026 08:53:13: 
+Cannot invoke "com.example.ServerLog.getTimestamp()" because "this.serverlog" is null
+15-06-2026 08:59:26: 
+Logger started at: 08:59
+15-06-2026 08:59:26: 
+Logger started at: 08:59
+15-06-2026 09:01:57: 
+Logger started at: 09:01
+15-06-2026 09:02:23: 
+message cache: [anonymous#9129 [09:02] (/127.0.0.1:55036) -> #0000: hi]
+15-06-2026 09:02:23: 
+json response: {"messages":[{"reciever":"0000","port":"55036","ip":"/127.0.0.1","tag":"9129","content":"hi","username":"anonymous","timestamp":"09:02"}]}

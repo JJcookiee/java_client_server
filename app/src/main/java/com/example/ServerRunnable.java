@@ -26,6 +26,7 @@ public class ServerRunnable implements Runnable {
         this.serverLog = serverLog;
     }
 
+    @Override
     public void run() {
         try {     
             InputStream input  = clientSocket.getInputStream();
@@ -56,9 +57,10 @@ public class ServerRunnable implements Runnable {
                     page.append("</body></html>");
                     String responseBody = page.toString();
                     byte[] body = responseBody.getBytes();
-                    output.write(("HTTP/1.1 200 OK\r\n" +
-                                "Content-Type: text/html; charset=UTF-8\r\n" +
-                                "Content-Length: " + body.length + "\r\n" +
+                    output.write(("""
+                                  HTTP/1.1 200 OK\r
+                                  Content-Type: text/html; charset=UTF-8\r
+                                  Content-Length: """ + body.length + "\r\n" +
                                 "Connection: keep-alive\r\n" +
                                 "\r\n").getBytes());
                     output.write(body);
@@ -78,7 +80,8 @@ public class ServerRunnable implements Runnable {
                         clientSocket.getInetAddress().toString(), 
                         reciever);
                     messageCache.add(newMessage);
-                    System.out.println("message cache: " + messageCache.toString());//debug
+                    System.out.println();//debug
+                    FileHandler.Debug("message cache: " + messageCache.toString());
                     ArrayList<Message> clientCache = getClientCache(reciever);
                     JSONObject jsonResponse = new JSONObject();
                     jsonResponse.put("messages", clientCache);
@@ -89,9 +92,10 @@ public class ServerRunnable implements Runnable {
                         ArrayList<OutputStream> streamsToRemove = new ArrayList<>();
                         for (OutputStream out : clientOutputStreams) {
                             try {
-                                out.write(("HTTP/1.1 200 OK\r\n" +
-                                            "Content-Type: application/json\r\n" +
-                                            "Content-Length: " + body.length + "\r\n" +
+                                out.write(("""
+                                           HTTP/1.1 200 OK\r
+                                           Content-Type: application/json\r
+                                           Content-Length: """ + body.length + "\r\n" +
                                             "Connection: keep-alive\r\n" +
                                             "\r\n").getBytes());
                                 out.write(body);
@@ -129,7 +133,7 @@ public class ServerRunnable implements Runnable {
     }
 
     public String getClientTag() {
-        if (clientTag == "0000") {
+        if (clientTag.equals("0000")) {
             clientTag = setClientTag();
         }
         return clientTag;
