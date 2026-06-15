@@ -30,6 +30,8 @@ public class Server {
             this.runningThread = Thread.currentThread();
         }
         openServerSocket();
+        Logger logger = new Logger(serverLog);
+        logger.startLogging();
 
         while(! isStopped()){
             Socket clientSocket = null;
@@ -52,6 +54,7 @@ public class Server {
                 new ServerRunnable(
                     clientSocket, messageCache, clientTags, clientOutputStreams, serverLog));
         }
+        logger.stopLogging();
         this.threadPool.shutdown();
         System.out.println("Server Stopped.") ;
     }
