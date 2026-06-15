@@ -196,3 +196,5 @@ json response: {"messages":[{"reciever":"0000","port":"58024","ip":"/127.0.0.1",
 InputHandler interrupted, stopping thread: Task com.example.InputHandler@14a0d01b rejected from java.util.concurrent.ThreadPoolExecutor@6d1cd201[Shutting down, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
 15-06-2026 20:47:25: 
 Connection reset
+15-06-2026 21:11:18: 
+InputHandler interrupted, stopping thread: Task com.example.InputHandler@355a43fe rejected from java.util.concurrent.ThreadPoolExecutor@7dda89d6[Shutting down, pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]

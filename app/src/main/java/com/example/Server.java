@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
@@ -27,6 +28,8 @@ public class Server {
     public Server(int port, Scanner scanner) {
         this.serverPort = port;
         this.scanner = scanner;
+
+        this.threadPool.execute(new InputHandler(this));
     }
 
     public void run(){
@@ -39,8 +42,6 @@ public class Server {
         serverLog = new ServerLog(time.toString(), messageCache, clientSockets);
         logger = new Logger(serverLog);
         logger.startLogging();
-
-        this.threadPool.execute(new InputHandler(this));
 
         while(! isStopped()){
             Socket clientSocket = null;
@@ -85,7 +86,10 @@ public class Server {
         }
     }
 
-    public void checkCommand(String command) {
+    public void checkCommand(String c) {
+        String[] parts = c.split(" ", 2);
+        String command = parts[0];
+        String argument = parts.length > 1 ? parts[1] : null;
         switch (command) {
             case "stop" -> {
                 System.out.println("Stopping server...");
@@ -93,7 +97,7 @@ public class Server {
             }
             case "start" -> {
                 if (this.isStopped()) {
-                    serverPort = App.getPort(scanner);
+                    serverPort = argument != null ? Integer.parseInt(argument) : App.getPort(scanner);
                     System.out.println("Starting server...");
                     this.run();
                 } else {
@@ -106,6 +110,33 @@ public class Server {
             }
             case "log" -> {
                 System.out.println(serverLog.getString());
+            }
+            case "ls" -> {
+                File folder = new File("files");
+                File[] files = folder.listFiles();
+                for (File file : files) {
+                    if (file.isFile()) {
+                        System.out.println(file.getName());
+                    }
+                }
+            }
+            case "cat" -> {
+                if (argument != null) {
+                    File file = new File("files/" + argument);
+                    if (file.exists() && file.isFile()) {
+                        try (Scanner fileScanner = new Scanner(file)) {
+                            while (fileScanner.hasNextLine()) {
+                                System.out.println(fileScanner.nextLine());
+                            }
+                        } catch (IOException e) {
+                            System.out.println("Error reading file: " + e.getMessage());
+                        }
+                    } else {
+                        System.out.println("File not found: " + argument);
+                    }
+                } else {
+                    System.out.println("Please specify a filename. e.g: cat <filename>");
+                }
             }
             default -> {
                 System.out.println("Unknown command: " + command);
