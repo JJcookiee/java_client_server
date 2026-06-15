@@ -13,7 +13,9 @@ public class Logger {
 
     public void startLogging() {
         scheduler.scheduleAtFixedRate(() -> {
-            serverlog.getString();
+            String s = serverlog.getString();
+            FileHandler.Save(s);
+            FileHandler.Update(s);
             FileHandler.Debug("Server log saved at: " + serverlog.getTimestamp());
         }, 0, 5, TimeUnit.MINUTES);
     }

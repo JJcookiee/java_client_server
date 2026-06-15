@@ -10,7 +10,7 @@ public class WordFilter {
     private Set<String> bannedWords = new HashSet<>();
 
     public WordFilter() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("banned_words.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("files/banned_words.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 bannedWords.add(line.trim().toLowerCase());

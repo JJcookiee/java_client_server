@@ -1,8 +1,10 @@
 package com.example;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 final class FileHandler {
     
@@ -11,56 +13,45 @@ final class FileHandler {
     PrintStream slp_print;
     PrintStream debug_print;
 
-
     FileHandler() {
-        File logFile = new File("logs/server_log_persistent.txt");
-        if (!logFile.exists()) {
-            try {
-                logFile.getParentFile().mkdirs();
-                logFile.createNewFile();
-                slp_print = new PrintStream(new FileOutputStream(logFile, true));
-            } catch (Exception e) {
-                Debug("Error creating log file: " + e.getMessage());
-            }
+        try{
+           slp_print = new PrintStream(new FileOutputStream("files/server_log_persistent.txt", true)); 
+        } catch (IOException e) {
+            Debug("Error creating persistent log file: " + e.getMessage());
         }
 
-        File debugFile = new File("logs/debug_log.txt");
-        if (!debugFile.exists()) {
-            try {
-                debugFile.getParentFile().mkdirs();
-                debugFile.createNewFile();
-                debug_print = new PrintStream(new FileOutputStream(debugFile, true));
-            } catch (Exception e) {
-                //Debug("Error creating debug log file: " + e.getMessage()); bit redundant dont you think
-            }
+        try {
+            debug_print = new PrintStream(new FileOutputStream("files/debug_log.txt", true));
+        } catch (Exception e) {
+            Debug("Error creating debug log file: " + e.getMessage());
         }
     }
 
     static void Debug(String s) {
-        LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         instance.debug_print.println(time + ": \n" + s);
     }
 
     static void Save(String s) {
-        LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         int counter = 0;
-        File newFile = new File("logs/server_log_" + time + ".txt");
+        File newFile = new File("files/server_log_" + time + ".txt");
         while (newFile.exists()) {
             counter++;
-            newFile = new File("logs/server_log_" + time + "_" + counter + ".txt");
+            newFile = new File("files/server_log_" + time + "_" + counter + ".txt");
         }
         try {
             newFile.createNewFile();
-            PrintStream newPrint = new PrintStream(new FileOutputStream(newFile, true));
-            newPrint.println(s);
-            newPrint.close();
-        } catch (Exception e) {
+            try (PrintStream newPrint = new PrintStream(new FileOutputStream(newFile, true))) {
+                newPrint.println(s);
+            }
+        } catch (IOException e) {
             Debug("Error saving log file: " + e.getMessage());
         }
     }
 
     static void Update(String s) {
-        LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         instance.slp_print.println(time + ": \n" + s);
     }
 }

@@ -1,0 +1,2 @@
+07:39: 
+Could not load banned words: banned_words.txt (The system cannot find the file specified)

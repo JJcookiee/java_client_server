@@ -1,11 +1,13 @@
 com\example\Message.class
-com\example\WebHandler.class
 com\example\Client.class
+com\example\WordFilter.class
+com\example\Logger.class
+com\example\ResponseHandler.class
+com\example\WebHandler.class
 com\example\FileHandler.class
 com\example\ServerRunnable.class
 com\example\App.class
 com\example\InputHandler.class
 com\example\Server.class
 com\example\PageConfig.class
-com\example\ResponseHandler.class
 com\example\ServerLog.class
