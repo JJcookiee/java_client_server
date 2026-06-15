@@ -1,0 +1,10 @@
+Server Log
+Server start: 20:47
+Up time: PT0S
+Number of Active Clients: 1
+Active Client logs:
+/127.0.0.1:58024
+  anonymous#1554 [20:43] (/127.0.0.1:58024) -> #0000: hi
+Message History:
+anonymous#1554 [20:43] (/127.0.0.1:58024) -> #0000: hi
+

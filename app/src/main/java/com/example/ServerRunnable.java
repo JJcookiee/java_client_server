@@ -80,7 +80,6 @@ public class ServerRunnable implements Runnable {
                         clientSocket.getInetAddress().toString(), 
                         reciever);
                     messageCache.add(newMessage);
-                    System.out.println();//debug
                     FileHandler.Debug("message cache: " + messageCache.toString());
                     ArrayList<Message> clientCache = getClientCache(reciever);
                     JSONObject jsonResponse = new JSONObject();

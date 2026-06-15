@@ -186,3 +186,13 @@ Message History:
 Error saving log file: The filename, directory name, or volume label syntax is incorrect
 15-06-2026 10:22:30: 
 Server log saved at: 15-06-2026 10:22:30
+15-06-2026 20:40:00: 
+InputHandler interrupted, stopping thread: Task com.example.InputHandler@68fcbdd1 rejected from java.util.concurrent.ThreadPoolExecutor@14a0d01b[Shutting down, pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+15-06-2026 20:43:12: 
+message cache: [anonymous#1554 [20:43] (/127.0.0.1:58024) -> #0000: hi]
+15-06-2026 20:43:12: 
+json response: {"messages":[{"reciever":"0000","port":"58024","ip":"/127.0.0.1","tag":"1554","content":"hi","username":"anonymous","timestamp":"20:43"}]}
+15-06-2026 20:47:06: 
+InputHandler interrupted, stopping thread: Task com.example.InputHandler@14a0d01b rejected from java.util.concurrent.ThreadPoolExecutor@6d1cd201[Shutting down, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+15-06-2026 20:47:25: 
+Connection reset

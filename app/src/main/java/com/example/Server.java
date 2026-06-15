@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,9 +22,11 @@ public class Server {
     protected ArrayList<Socket> clientSockets = new ArrayList<>();
     protected ServerLog serverLog = null;
     protected Logger logger = null;
+    protected Scanner scanner;
 
-    public Server(int port) {
+    public Server(int port, Scanner scanner) {
         this.serverPort = port;
+        this.scanner = scanner;
     }
 
     public void run(){
@@ -36,6 +39,8 @@ public class Server {
         serverLog = new ServerLog(time.toString(), messageCache, clientSockets);
         logger = new Logger(serverLog);
         logger.startLogging();
+
+        this.threadPool.execute(new InputHandler(this));
 
         while(! isStopped()){
             Socket clientSocket = null;
@@ -57,7 +62,6 @@ public class Server {
         }
         logger.stopLogging();
         this.threadPool.shutdown();
-        System.out.println("Server Stopped.") ;
     }
 
     private synchronized boolean isStopped() {
@@ -78,6 +82,35 @@ public class Server {
             this.serverSocket = new ServerSocket(this.serverPort);
         } catch (IOException e) {
             throw new RuntimeException("Cannot open port " + serverPort, e);
+        }
+    }
+
+    public void checkCommand(String command) {
+        switch (command) {
+            case "stop" -> {
+                System.out.println("Stopping server...");
+                this.stop();
+            }
+            case "start" -> {
+                if (this.isStopped()) {
+                    serverPort = App.getPort(scanner);
+                    System.out.println("Starting server...");
+                    this.run();
+                } else {
+                    System.out.println("Server is already running. Type stop to stop the server.");
+                }
+            }
+            case "status" -> {
+                System.out.println("Server is running on port: " + serverPort);
+                System.out.println("Connected clients: " + clientSockets.size());
+            }
+            case "log" -> {
+                System.out.println(serverLog.getString());
+            }
+            default -> {
+                System.out.println("Unknown command: " + command);
+                System.out.println("Available commands: stop, status");
+            }
         }
     }
 }

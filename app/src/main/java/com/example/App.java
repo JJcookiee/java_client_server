@@ -19,11 +19,10 @@ public final class App {
         if (args.length > 0) {
             if (args[0].equals("server")) {
                 try {
-                    new Server(port).run();
+                    new Server(port, scanner).run();
                 } catch (Exception e) {
                     FileHandler.Debug(e.getMessage());
                 }
-                System.out.println("\nServer started on port: " + port);
             }
         } else {
             try {
