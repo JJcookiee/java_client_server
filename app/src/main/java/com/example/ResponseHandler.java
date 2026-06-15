@@ -37,23 +37,22 @@ public class ResponseHandler implements Runnable {
                 }
                 
                 if (jsonBody.isEmpty() || !jsonBody.startsWith("{")) {
-                    System.out.println("Skipping non-JSON response: " + response.substring(0, Math.min(50, response.length())));
+                    FileHandler.Debug("Skipping non-JSON response: " + response.substring(0, Math.min(50, response.length())));
                     continue;
                 }
                 
                 lastResponse = response;
                 
                 JSONObject jsonResponse = new JSONObject(jsonBody);
-                System.out.println("json response: "+jsonResponse.toString());//debug
+                FileHandler.Debug("json response: " + jsonResponse.toString());
                 client.webHandler.setPage(jsonResponse, client.username);
             } catch (Exception e) {
-                System.out.println("Error parsing response(or interruption): " + response);
-                e.printStackTrace();
+                FileHandler.Debug("Error parsing response(or interruption): " + response + e.getMessage());
             }
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
-                System.out.println("ResponseHandler interrupted, stopping thread.");
+                FileHandler.Debug("ResponseHandler interrupted, stopping thread." + e.getMessage());
                 break;
             }
         }

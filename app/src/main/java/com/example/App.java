@@ -21,7 +21,7 @@ public final class App {
                 try {
                     new Server(port).run();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    FileHandler.Debug(e.getMessage());
                 }
                 System.out.println("\nServer started on port: " + port);
             }
@@ -30,7 +30,7 @@ public final class App {
                 String username = getUser(scanner);
                 new Client("localhost", port, username, scanner).run();
             } catch (Exception e) {
-                e.printStackTrace();
+                FileHandler.Debug(e.getMessage());
             }
         }
     }

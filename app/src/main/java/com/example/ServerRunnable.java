@@ -98,6 +98,7 @@ public class ServerRunnable implements Runnable {
                                 out.flush();
                             } catch (IOException e) {
                                 streamsToRemove.add(out);
+                                FileHandler.Debug(e.getMessage());
                             }
                         }
                         for (OutputStream out : streamsToRemove) {
@@ -113,7 +114,7 @@ public class ServerRunnable implements Runnable {
             output.close();
             clientSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            FileHandler.Debug(e.getMessage());
         }
     }
     

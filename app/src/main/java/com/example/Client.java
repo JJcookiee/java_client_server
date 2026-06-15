@@ -39,7 +39,7 @@ public class Client {
         try {
             webHandler.main(new String[0]);
         } catch (Exception e) {
-            e.printStackTrace();
+            FileHandler.Debug(e.getMessage());
         }
         
         this.threadPool.execute(
@@ -58,7 +58,7 @@ public class Client {
         try {
             toServer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            FileHandler.Debug(e.getMessage());
         }
     }
 
@@ -74,7 +74,7 @@ public class Client {
             out.write(message.getBytes());
             out.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            FileHandler.Debug(e.getMessage());
         }
     }
 
@@ -127,7 +127,7 @@ public class Client {
             //in.close();
             return pageBuilder.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            FileHandler.Debug(e.getMessage());
             return null;
         }
     }
@@ -146,6 +146,7 @@ public class Client {
             socket.setReuseAddress(true);
             return true;
         } catch (Exception e) {
+            FileHandler.Debug(e.getMessage());
             return false;
         }
     }

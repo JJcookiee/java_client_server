@@ -14,8 +14,7 @@ public class InputHandler implements Runnable {
                 String textMessage = client.scanner.nextLine();
                 client.checkMessage(textMessage);
             } catch (Exception e) {
-                System.out.println("InputHandler interrupted, stopping thread: ");
-                e.printStackTrace();
+                FileHandler.Debug("InputHandler interrupted, stopping thread: " + e.getMessage());
                 break;
             }
         }
