@@ -30,7 +30,10 @@ public class ServerLog {
     }
 
     protected String getTimestamp() { return timestamp; }
-    protected Map<String, List<Message>> getActiveClients() { return new HashMap<>(ActiveClients); }
+    protected Map<String, List<Message>> getActiveClients() { 
+        sortClients();
+        return new HashMap<>(ActiveClients); 
+    }
     protected ArrayList<Message> getMessageHistory() { return new ArrayList<>(messageHistory); }
 
     protected void setTimestamp(String timestamp) { this.timestamp = timestamp; }

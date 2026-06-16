@@ -59,7 +59,6 @@ public class Server {
             Socket clientSocket = null;
             try {
                 clientSocket = this.serverSocket.accept();
-                clientSockets.add(clientSocket);
             } catch (IOException e) {
                 if(isStopped()) {
                     System.out.println("Server Stopped.") ;
@@ -71,7 +70,7 @@ public class Server {
 
             this.threadPool.execute(
                 new ServerRunnable(
-                    clientSocket, messageCache, clientTags, clientOutputStreams, serverLog));
+                    clientSocket, this));
         }
         logger.stopLogging();
         this.threadPool.shutdown();
@@ -111,6 +110,46 @@ public class Server {
     }
 
     /**
+     * registers the client in all the relevant lists 
+     * @param socket the client socket
+     * @param tag the clients tag
+     * @param outputstream the clients outputstream
+     * */
+    public synchronized void registerClient(Socket socket, String tag, OutputStream outputStream) {
+        clientSockets.add(socket);
+        clientTags.add(tag);
+        clientOutputStreams.add(outputStream);
+    }
+
+    /**
+     * bans the client by closing the socket and outputstream and removing the client registary
+     * @param tag the clients tag
+     * @return a boolean value confirming the client was banned
+     */
+    public synchronized boolean banClient(String tag) {
+        int index = clientTags.indexOf(tag);
+        if (index == -1) { return false; }
+
+        try {
+            clientSockets.get(index).close();
+        } catch (IOException e) {
+            throw new RuntimeException("Error closing socket: ", e);
+        }
+
+        try {
+            clientOutputStreams.get(index).close();
+        } catch (IOException e) {
+            throw new RuntimeException("Error closing outputstream: ", e);
+        }
+
+        clientOutputStreams.remove(index);
+        clientSockets.remove(index);
+        clientTags.remove(index);
+
+        return true;
+    }
+
+    /**
      * checks a string for a command and arguments
      * executes the command with its arguments
      * Commands and their outcomes:
@@ -121,6 +160,7 @@ public class Server {
      * <p>log -> prints {@link serverLog.toString()}</p>
      * <p>ls -> lists all files in 'files' folder</p>
      * <p>cat <file> -> prints the file</p>
+     * <p>ban <tag> -> bans a user</p>
      * @param c the command from the server admin
      */
     public void checkCommand(String c) {
@@ -173,6 +213,17 @@ public class Server {
                     }
                 } else {
                     System.out.println("Please specify a filename. e.g: cat <filename>");
+                }
+            }
+            case "ban" -> {
+                 if (argument != null) {
+                    if(banClient(argument)){
+                        System.out.println("Banned client #" + argument);
+                    } else {
+                        System.out.println("Client tag not found: " + argument);
+                    }
+                } else {
+                    System.out.println("Please specify a users tag. e.g: ban <tag>");
                 }
             }
             default -> {

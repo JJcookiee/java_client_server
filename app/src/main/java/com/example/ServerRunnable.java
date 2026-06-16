@@ -15,26 +15,17 @@ import org.json.JSONObject;
  */
 public class ServerRunnable implements Runnable {
     protected Socket clientSocket = null;
-    protected ArrayList<Message> messageCache = null;
-    protected ArrayList<String> clientTags = null;
     protected String clientTag = "0000";
-    protected ArrayList<OutputStream> clientOutputStreams = null;
-    protected ServerLog serverLog = null;
+    protected Server server;
 
     /**
      * ServerRunnable constructor
-     * @param clientSocket
-     * @param messageCache
-     * @param clientTags
-     * @param clientOutputStreams
-     * @param serverLog
+     * @param clientSocket the socket needed
+     * @param server the server to access all the lists off stuff that are needed over all runnables
      */
-    public ServerRunnable(Socket clientSocket, ArrayList<Message> messageCache, ArrayList<String> clientTags, ArrayList<OutputStream> clientOutputStreams, ServerLog serverLog) {
+    public ServerRunnable(Socket clientSocket, Server serverLog) {
         this.clientSocket = clientSocket;
-        this.messageCache = messageCache;
-        this.clientTags = clientTags;
-        this.clientOutputStreams = clientOutputStreams;
-        this.serverLog = serverLog;
+        this.server = server;
     }
 
     /**
@@ -48,12 +39,8 @@ public class ServerRunnable implements Runnable {
             InputStream input  = clientSocket.getInputStream();
             OutputStream output = clientSocket.getOutputStream();
 
-            synchronized (clientOutputStreams) {
-                clientOutputStreams.add(output);
-            }
-
             clientTag = getClientTag();
-            
+            server.registerClient(clientSocket, clientTag, output);
             /**
              * Reads input and decides how to respond
              */
@@ -78,7 +65,7 @@ public class ServerRunnable implements Runnable {
                     StringBuilder page = new StringBuilder();
                     page.append("<html><body>");
                     page.append("<p>Server is running.</p>");
-                    page.append(serverLog.getHTML());
+                    page.append(server.serverLog.getHTML());
                     page.append("</body></html>");
                     String responseBody = page.toString();
                     byte[] body = responseBody.getBytes();
@@ -102,13 +89,13 @@ public class ServerRunnable implements Runnable {
                     Message newMessage = new Message(
                         content,
                         username, 
-                        clientTag.toString(), 
+                        clientTag, 
                         time.toString(), 
                         Integer.toString(clientSocket.getPort()), 
                         clientSocket.getInetAddress().toString(), 
                         reciever);
-                    messageCache.add(newMessage);
-                    FileHandler.Debug("message cache: " + messageCache.toString());
+                    server.messageCache.add(newMessage);
+                    FileHandler.Debug("message cache: " + server.messageCache.toString());
                     ArrayList<Message> clientCache = getClientCache(reciever);
                     JSONObject jsonResponse = new JSONObject();
                     jsonResponse.put("messages", clientCache);
@@ -118,9 +105,9 @@ public class ServerRunnable implements Runnable {
                     /**
                      * Sends all clients the messageCache as a JSON
                      */
-                    synchronized(clientOutputStreams) {
+                    synchronized(server.clientOutputStreams) {
                         ArrayList<OutputStream> streamsToRemove = new ArrayList<>();
-                        for (OutputStream out : clientOutputStreams) {
+                        for (OutputStream out : server.clientOutputStreams) {
                             try {
                                 out.write(("""
                                            HTTP/1.1 200 OK\r
@@ -136,7 +123,7 @@ public class ServerRunnable implements Runnable {
                             }
                         }
                         for (OutputStream out : streamsToRemove) {
-                            clientOutputStreams.remove(out);
+                            server.clientOutputStreams.remove(out);
                         }
                     }
                 }
@@ -156,7 +143,7 @@ public class ServerRunnable implements Runnable {
      */
     public ArrayList<Message> getClientCache(String clientTag) {
         ArrayList<Message> clientMessageCache = new ArrayList<>();
-        for (Message msg : messageCache) {
+        for (Message msg : server.messageCache) {
             if (msg.reciever.equals(clientTag) || msg.reciever.equals("0000")) {
                 clientMessageCache.add(msg);
             }
@@ -177,6 +164,8 @@ public class ServerRunnable implements Runnable {
 
     /**
      * creates new random tag 0001-9999 and adds it to a list of client tags
+     * cannot be more than 10000 clients because returning null will throw an error
+     * i think the server will break before that
      * @return clientTag
      */
     public String setClientTag() {
@@ -184,11 +173,11 @@ public class ServerRunnable implements Runnable {
         int tag = rand.nextInt(10000);
         String clientTag = String.format("%04d", tag);
 
-        if (clientTags.contains(clientTag)) {
-            setClientTag();
+        if (!server.clientTags.contains(clientTag)) {
+            return clientTag;
         } else {
-            clientTags.add(clientTag);
+            clientTag = setClientTag();
         }
-        return clientTag;
+        return null;
     }
 }
