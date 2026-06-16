@@ -228,7 +228,7 @@ public class Server {
             }
             default -> {
                 System.out.println("Unknown command: " + command);
-                System.out.println("Available commands: stop, status");
+                System.out.println("Available commands: stop, status, log, ls, cat, ban");
             }
         }
     }
