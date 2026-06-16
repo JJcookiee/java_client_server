@@ -20,8 +20,9 @@ public class Logger {
     }
 
     /**
-     * startLogging
      * Starts a scheduler to save and update the server logs every 5 minutes
+     * Includes the time in each log
+     * @throws Exception throws an error if a log fails, also throws an error if showing that error in the debug log fails
      */
     public void startLogging() {
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
@@ -43,7 +44,6 @@ public class Logger {
     }
 
     /**
-     * stopLogging
      * shuts down scheduler
      */
     public void stopLogging() {

@@ -1,8 +1,10 @@
 package com.example;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * App entry point
@@ -15,9 +17,12 @@ public final class App {
     public static int port = 8080;
     /**8000 is a reserved port */
     public static List<String> reservedPorts = Arrays.asList("8000");
+    public static String address = "localhost";
     /**
      * main
-     * @param args command line arguments - 'sever' to start the server as admin, no arguement starts the client
+     * @param args command line arguments - 'sever' to start the server as admin, no arguement starts the client as a user
+     * @throws Exception throws an error if the server doesnt start
+     * @throws IOException throws an error if the client doesn't start
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -33,17 +38,17 @@ public final class App {
         } else {
             try {
                 String username = getUser(scanner);
-                new Client("localhost", port, username, scanner).run();
-            } catch (Exception e) {
+                new Client(address, port, username, scanner).run();
+            } catch (IOException e) {
                 FileHandler.Debug(e.getMessage());
             }
         }
     }
 
     /**
-     * getPort
-     * @param scanner scanner
-     * @return returns the port number
+     * asks the user for a port number and checks whether its valid, calls itself if its not
+     * @param scanner scanner to read user input
+     * @return returns a valid port number
      */
     public static int getPort(Scanner scanner) {
         System.out.print("Enter port number:");
@@ -66,9 +71,30 @@ public final class App {
     }
 
     /**
-     * Username input
-     * @param scanner scanner
-     * @return returns the username
+     * gets an address from the user and checks its a real ip with regex. if given no address it assumes the default 'localhost'
+     * @param scanner gets user input
+     * @return ip address
+     */
+    public static String getAddress(Scanner scanner){
+        System.out.print("Enter port number:");
+        String ipScan = scanner.nextLine();
+        String binaryRegex = "(\\d{1,2}|(0|1)\\" + "d{2}|2[0-4]\\d|25[0-5])";
+        String ipRegex = binaryRegex + "\\." + binaryRegex + "\\." + binaryRegex + "\\." + binaryRegex;
+        Pattern p = Pattern.compile(ipRegex);
+
+        if (ipScan.isEmpty()) {
+            System.out.println("\rUsing default address: " + address);
+        } else if (!p.matcher(ipScan).matches()) {
+            address = getAddress(scanner);
+        } else {
+            address = ipScan;
+        }
+        return address;
+    }
+    /**
+     * asks the user for a username
+     * @param scanner scanner for user input
+     * @return returns the username, or annonymous if they user doesn't give one
      */
     public static String getUser(Scanner scanner) {
         System.out.print("Enter username:");

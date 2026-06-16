@@ -38,7 +38,7 @@ public class Client {
     }
 
     /**
-     * getSocketAddress
+     * gets the socket address of the client based of the InetAddress and port from toServer. formatted like address:port
      * @return returns socket address based off InetAddress and Port
      */
     public String getSocketAddress() {
@@ -47,7 +47,8 @@ public class Client {
 
     /**
      * Client runnable
-     * Contains threads for webHandler, InputHandler, ResponseHandler
+     * Contains threads for {@link WebHandler}, {@link InputHandler}, {@link ResponseHandler}
+     * @throws Exception throws exception if the webhandler doesnt run
      */
     public void run() {
         synchronized(this) {
@@ -75,8 +76,8 @@ public class Client {
     }
 
     /**
-     * close
-     * Closes socket
+     * closes the toServer socket
+     * @throws IOException throws exception if it cant close the socket
      */
     public void close() {
         try {
@@ -87,8 +88,8 @@ public class Client {
     }
 
     /**
-     * sendMessage
-     * @param message String
+     * outputs a message through the socket after checking for its intended reciever
+     * @param message the message string
      * @param isWhisper boolean. tags are added to the end of the message. to whisper add '````*tag*' to the end of a message. if not whispered it auto adds '0000' to send to all
      */
     public void sendMessage(String message, boolean isWhisper) {
@@ -108,10 +109,10 @@ public class Client {
     }
 
     /**
-     * checkMessage
+     * checks the message for banned words and commands
      * Calls the censorMessage function to filter banned words
      * Checks message for any commands, and executes them if so
-     * @param message String
+     * @param message the message string
      */
     public void checkMessage(String message) {
         message = wordFilter.censorMessage(message);
@@ -140,7 +141,7 @@ public class Client {
     }
 
     /**
-     * getPage
+     * gets the input from the server
      * @return returns page from input strems, returns null if it cant read the input stream
      * @exception IOexception input error
      */
@@ -167,9 +168,8 @@ public class Client {
     }
     
     /**
-     * getBrowserPort
-     * iterates until it finds a free port
-     * @return a port number for the client UI
+     * gets a port for the browser, iterates until it finds a free one
+     * @return a valid port
      */
     public int getBrowserPort() {
         while (true) {
@@ -181,9 +181,8 @@ public class Client {
     }
 
     /**
-     * isPortFree
      * checks if a port is free
-     * @param port
+     * @param port the port to be checked
      * @return boolean, true if port is free, fasle if not
      */
     private boolean isPortFree(int port) {

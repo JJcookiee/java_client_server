@@ -22,8 +22,8 @@ public class ResponseHandler implements Runnable {
     }
 
     /**
-     * ResponseHandler runnable
-     * Responds to JSON messages
+     * checks the input each second, if its null or the same as last time it skips
+     * if the response isnt a JSON it also skips
      * @exception InterruptedExecption thread interrupted
      * @exception JSONExecption cannot parse resposne
      */

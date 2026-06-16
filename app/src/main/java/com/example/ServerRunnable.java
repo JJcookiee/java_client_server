@@ -38,8 +38,9 @@ public class ServerRunnable implements Runnable {
     }
 
     /**
-     * ServerRunnable runnable
      * Deals with input and output of server
+     * Reads either the messages from client which it evaluates and turns into a json to send to each respective client to view thei messages
+     * Or read the http get or post requests for the browser
      */
     @Override
     public void run() {
@@ -54,7 +55,6 @@ public class ServerRunnable implements Runnable {
             clientTag = getClientTag();
             
             /**
-             * Main loop
              * Reads input and decides how to respond
              */
             while (true) {
@@ -150,10 +150,9 @@ public class ServerRunnable implements Runnable {
     }
     
     /**
-     * getClientCache
-     * sorts which messages teh client should be able to see
+     * sorts which messages the client should be able to see
      * @param clientTag
-     * @return
+     * @return the correct messages for them to see
      */
     public ArrayList<Message> getClientCache(String clientTag) {
         ArrayList<Message> clientMessageCache = new ArrayList<>();
@@ -166,7 +165,7 @@ public class ServerRunnable implements Runnable {
     }
 
     /**
-     * getClientTag
+     * gives the client a tag if it needs one
      * @return clientTag
      */
     public String getClientTag() {
@@ -177,8 +176,7 @@ public class ServerRunnable implements Runnable {
     }
 
     /**
-     * setClientTag
-     * creates new random tag 0001-9999
+     * creates new random tag 0001-9999 and adds it to a list of client tags
      * @return clientTag
      */
     public String setClientTag() {

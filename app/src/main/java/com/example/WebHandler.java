@@ -33,7 +33,7 @@ public class WebHandler implements HttpHandler {
     }
 
     /**
-     * WebHandler main
+     * starts the http server
      * has commented out function to open the browser for client ui
      * @param args
      * @throws Exception
@@ -52,10 +52,9 @@ public class WebHandler implements HttpHandler {
     }
 
     /**
-     * WebHandler handle
      * handles the client ui
-     * @param exchange
-     * @throws IOException
+     * @param exchange the http variable
+     * @throws IOException throws exception if the exchange handler doesnt work
      */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -127,10 +126,9 @@ public class WebHandler implements HttpHandler {
     }
     
     /**
-     * setPage
      * creates the html for the client ui
-     * @param jsonResponse
-     * @param username
+     * @param jsonResponse the response from the getPage function
+     * @param username the clients username
      */
     public void setPage(JSONObject jsonResponse, String username) {
         StringBuilder page = new StringBuilder();

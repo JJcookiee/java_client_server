@@ -40,9 +40,9 @@ public class Server {
     }
 
     /**
-     * Server runnable
-     * Starts logger
-     * Starts serverRunnable thread for each client connected to the socket
+     * Starts {@link Logger}
+     * creates new {@link serverLog}
+     * Starts {@link serverRunnable} thread for each client connected to the socket
      */
     public void run(){
         synchronized(this){
@@ -78,7 +78,7 @@ public class Server {
     }
 
     /**
-     * isStopped
+     * returns the isStopped value
      * @return boolean isStopped
      */
     private synchronized boolean isStopped() {
@@ -86,7 +86,6 @@ public class Server {
     }
 
     /**
-     * stop
      * Closes socket
      * @exception IOExecption error closing server
      */
@@ -100,7 +99,6 @@ public class Server {
     }
 
     /**
-     * openServerSocket
      * opens server socket
      * @exception IOException cannot open port
      */
@@ -113,10 +111,17 @@ public class Server {
     }
 
     /**
-     * checkCommand
      * checks a string for a command and arguments
-     * executes the command with tis arguments
-     * @param c
+     * executes the command with its arguments
+     * Commands and their outcomes:
+     * <p>stop -> server stops</p>
+     * <p>start -> asks for port and starts new server or if server is running complains server is already running</p>
+     * <p>start <port> -> starts server based off given port argument</p>
+     * <p>status -> prints server port and number of clients</p>
+     * <p>log -> prints {@link serverLog.toString()}</p>
+     * <p>ls -> lists all files in 'files' folder</p>
+     * <p>cat <file> -> prints the file</p>
+     * @param c the command from the server admin
      */
     public void checkCommand(String c) {
         String[] parts = c.split(" ", 2);

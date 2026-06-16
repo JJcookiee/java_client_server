@@ -41,7 +41,6 @@ public class Message {
     public String getReciever() { return reciever; }
 
     /**
-     * toString
      * converts message to formatted string
      */
     @Override

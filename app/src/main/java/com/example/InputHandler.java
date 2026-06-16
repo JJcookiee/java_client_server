@@ -27,7 +27,8 @@ public class InputHandler implements Runnable {
     }
     
     /**
-     * InputHandler Runnable
+     * runs the InputHandler for either client or server depending how its been initialised
+     * @throws Exception throws if thread is interrupted
      */
     @Override
     public void run() {

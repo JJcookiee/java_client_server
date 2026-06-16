@@ -36,7 +36,6 @@ final class FileHandler {
     }
 
     /**
-     * Debug
      * Takes a string and prints it to the debug log with the time
      * @param s
      */
@@ -46,7 +45,6 @@ final class FileHandler {
     }
 
     /**
-     * Save
      * Takes a string and saves it to a new file with the date and time and counter if multiple saved per minute
      * @param s
      * @exception IOExeception error saving file
@@ -70,7 +68,6 @@ final class FileHandler {
     }
 
     /**
-     * Update
      * Takes a string and adds it to server_log_persistent
      * @param s
      */

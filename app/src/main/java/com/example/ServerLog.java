@@ -37,8 +37,7 @@ public class ServerLog {
     protected void addClient(Client client) { ClientList.add(client); }
 
     /**
-     * sortClients
-     * Connects active clients to the messages theyve sent
+     * Connects active clients to the messages they've sent
      */
     public void sortClients() {
         ActiveClients.clear();
@@ -51,8 +50,7 @@ public class ServerLog {
     }
 
     /**
-     * getHTML
-     * gets the current serverLog as html
+     * gets the current serverLog as html, containing the timestamp, the number of active clients, the active clients and their related messages, and the whole message history of the server
      * @return html
      */
     public String getHTML() {
@@ -78,8 +76,7 @@ public class ServerLog {
     }
 
     /**
-     * getString
-     * gets the current serverLog as a string
+     * gets the current serverLog as a string, including the timestamp, the server up time, the number of active clients and their messages, all the messages
      * @return string
      */
     public String getString() {

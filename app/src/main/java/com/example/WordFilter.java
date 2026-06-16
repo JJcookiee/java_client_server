@@ -29,10 +29,9 @@ public class WordFilter {
     }
 
     /**
-     * censorMessage
      * censors banned words from messages
-     * @param m
-     * @return cm
+     * @param m the message
+     * @return the censored message
      */
     public String censorMessage(String m) {
         String cm = m;
