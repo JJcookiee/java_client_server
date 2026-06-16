@@ -38,6 +38,7 @@ public final class App {
         } else {
             try {
                 String username = getUser(scanner);
+                address = getAddress(scanner);
                 new Client(address, port, username, scanner).run();
             } catch (IOException e) {
                 FileHandler.Debug(e.getMessage());
@@ -76,7 +77,7 @@ public final class App {
      * @return ip address
      */
     public static String getAddress(Scanner scanner){
-        System.out.print("Enter port number:");
+        System.out.print("Enter address:");
         String ipScan = scanner.nextLine();
         String binaryRegex = "(\\d{1,2}|(0|1)\\" + "d{2}|2[0-4]\\d|25[0-5])";
         String ipRegex = binaryRegex + "\\." + binaryRegex + "\\." + binaryRegex + "\\." + binaryRegex;

@@ -68,17 +68,19 @@ public class WebHandler implements HttpHandler {
             String page = config.getPage();
 
             int start = page.indexOf("<div id='messages'>");
-            int end = page.indexOf("</div>", start);
+            int end = page.indexOf("</div>", start + 18);
 
             String messagesOnly = "";
 
             if (start != -1 && end != -1) {
-                messagesOnly = page.substring(start + 18, end);
+                messagesOnly = page.substring(start, end + 6);
+            } else {
+                messagesOnly = "<div id='messages'>No message</div>";
             }
 
-            byte[] bytes = messagesOnly.getBytes();
+            byte[] bytes = messagesOnly.getBytes(StandardCharsets.UTF_8);
 
-            exchange.getResponseHeaders().add("Content-Type", "text/html");
+            exchange.getResponseHeaders().add("Content-Type", "text/html; charset=UTF-8");
             exchange.sendResponseHeaders(200, bytes.length);
 
             OutputStream out = exchange.getResponseBody();
@@ -102,7 +104,6 @@ public class WebHandler implements HttpHandler {
                     break;
                 }
             }
-            System.out.println("Received message: " + message); // Debug log
             if (!message.isEmpty()) {
                 client.sendMessage(message, false);
             }
@@ -110,18 +111,14 @@ public class WebHandler implements HttpHandler {
             exchange.getResponseHeaders().add("Location", "/");
             exchange.sendResponseHeaders(302, -1);
             exchange.close();
-        } else {
-            String response = this.config.getPage();
-            response += "\n\n<form method='POST' action='/'>" +
-                    "<input type='text' name='message' placeholder='Type a message...' required>" +
-                    "<button type='submit'>Send</button>" +
-                    "</form>";
-            byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
-            exchange.getResponseHeaders().add("Content-Type", "text/html; charset=utf-8");
-            exchange.sendResponseHeaders(200, bytes.length);
-            try (OutputStream out = exchange.getResponseBody()) {
-                out.write(bytes);
-            }
+            return;
+        }
+        String response = this.config.getPage();
+        byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
+        exchange.getResponseHeaders().add("Content-Type", "text/html; charset=utf-8");
+        exchange.sendResponseHeaders(200, bytes.length);
+        try (OutputStream out = exchange.getResponseBody()) {
+            out.write(bytes);
         }
     }
     
@@ -138,21 +135,33 @@ public class WebHandler implements HttpHandler {
         page.append("<body><h4>Messages for " + username + "</h4>");
         page.append("<div id='messages'>");
 
+        String toReceiver = "";
         if (jsonResponse.getJSONArray("messages").isEmpty()) {
             page.append("<p>No messages yet</p>");
         } else {
             for (Object msg : jsonResponse.getJSONArray("messages")) {
                 JSONObject message = (JSONObject) msg;
+                if(!message.getString("receiver").equals("0000")) {
+                    toReceiver = "->#" + message.getString("receiver") + ": ";
+                }
                 page.append(
                     "<a>[" + 
                     message.getString("timestamp") + "]" + 
                     message.getString("username") + "#" + 
                     message.getString("tag") + ": " + 
+                    toReceiver + 
                     message.getString("content") + 
                     "</a><br>"
                 );
             }
         }
+
+        page.append("</div>");
+
+        page.append("<form method='POST' action='/'>");
+        page.append("<input type='text' name='message' placeholder='Type a message...' required autofocus>");
+        page.append("<button type='submit'>Send</button>");
+        page.append("</form>");
 
         /**
          * embedded js so the messages can be updated, and refresh each second
@@ -164,17 +173,25 @@ public class WebHandler implements HttpHandler {
                 const res = await fetch("/messages");
                 const html = await res.text();
 
-                document.getElementById("messages").innerHTML =
-                    new DOMParser()
-                        .parseFromString(html, "text/html")
-                        .getElementById("messages")
-                        .innerHTML;
+                const messagesDiv = document.getElementById("messages");
+                if (messagesDiv) {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+                    const newMessages = doc.getElementById("messages");
+                    if (newMessages) {
+                        messagesDiv.innerHTML = newMessages.innerHTML;
+                    }
+                }
             } catch (e) {
                 console.log("update failed", e);
             }
         }
 
         setInterval(updateMessages, 1000);
+
+        updateMessages();
+
+        document.querySelector('input[name="message"]').focus();
         </script>
         """);
 
@@ -182,5 +199,11 @@ public class WebHandler implements HttpHandler {
         page.append("</html>");
 
         this.config.setPage(page.toString());
+    }
+
+    public void setPage(String username) {
+        JSONObject emptyJson = new JSONObject();
+        emptyJson.put("messages", new org.json.JSONArray());
+        setPage(emptyJson, username);
     }
 }

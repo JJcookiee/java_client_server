@@ -1,0 +1,14 @@
+Server Log
+Server start: 07:58
+Up time: 00:05
+Number of Active Clients: 1
+Active Client logs:
+/127.0.0.1:64837
+  anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+  anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+  anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hello
+Message History:
+anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hello
+

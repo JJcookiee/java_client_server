@@ -10,7 +10,7 @@ public class Message {
     protected String timestamp;
     protected String port;
     protected String ip;
-    protected String reciever;
+    protected String receiver;
     
     /**
      * Message constructor
@@ -20,16 +20,16 @@ public class Message {
      * @param timestamp
      * @param port
      * @param ip
-     * @param reciever
+     * @param receiver
      */
-    public Message(String content, String username, String tag,String timestamp, String port, String ip, String reciever) {
+    public Message(String content, String username, String tag,String timestamp, String port, String ip, String receiver) {
         this.content = content;
         this.username = username;
         this.tag = tag;
         this.timestamp = timestamp;
         this.port = port;
         this.ip = ip;
-        this.reciever = reciever;
+        this.receiver = receiver;
     }
 
     public String getContent() { return content; }
@@ -38,13 +38,13 @@ public class Message {
     public String getTimestamp() { return timestamp; }
     public String getPort() { return port; }
     public String getIp() { return ip; }
-    public String getReciever() { return reciever; }
+    public String getReceiver() { return receiver; }
 
     /**
      * converts message to formatted string
      */
     @Override
     public String toString() {
-        return username + "#" + tag + " [" + timestamp + "] (" + ip + ":" + port + ") -> #" + reciever + ": " + content;
+        return username + "#" + tag + " [" + timestamp + "] (" + ip + ":" + port + ") -> #" + receiver + ": " + content;
     }
 }

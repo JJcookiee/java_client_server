@@ -1,0 +1,7 @@
+Server Log
+Server start: 09:13
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+

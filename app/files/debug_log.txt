@@ -198,3 +198,365 @@ InputHandler interrupted, stopping thread: Task com.example.InputHandler@14a0d01
 Connection reset
 15-06-2026 21:11:18: 
 InputHandler interrupted, stopping thread: Task com.example.InputHandler@355a43fe rejected from java.util.concurrent.ThreadPoolExecutor@7dda89d6[Shutting down, pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+16-06-2026 07:31:28: 
+Connection reset
+16-06-2026 07:32:21: 
+message cache: [anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi]
+16-06-2026 07:32:21: 
+json response: {"messages":[{"port":"51204","reciever":"0000","ip":"/127.0.0.1","tag":"5140","content":"hi","timestamp":"07:32","username":"anonymous"}]}
+16-06-2026 07:32:29: 
+message cache: [anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi, anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi]
+16-06-2026 07:32:29: 
+Socket closed
+16-06-2026 07:32:29: 
+Skipping non-JSON response: HTTP/1.1 200 OK
+Content-Type: application/json
+C
+16-06-2026 07:32:29: 
+Socket closed
+16-06-2026 07:32:30: 
+json response: {"messages":[{"port":"51204","reciever":"0000","ip":"/127.0.0.1","tag":"5140","content":"hi","timestamp":"07:32","username":"anonymous"},{"port":"51204","reciever":"0000","ip":"/127.0.0.1","tag":"5140","content":"hi","timestamp":"07:32","username":"anonymous"}]}
+16-06-2026 07:32:34: 
+message cache: [anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi, anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi, anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hello]
+16-06-2026 07:32:34: 
+Skipping non-JSON response: HTTP/1.1 200 OK
+Content-Type: application/json
+C
+16-06-2026 07:32:34: 
+Socket closed
+16-06-2026 07:32:35: 
+json response: {"messages":[{"port":"51204","reciever":"0000","ip":"/127.0.0.1","tag":"5140","content":"hi","timestamp":"07:32","username":"anonymous"},{"port":"51204","reciever":"0000","ip":"/127.0.0.1","tag":"5140","content":"hi","timestamp":"07:32","username":"anonymous"},{"port":"51204","reciever":"0000","ip":"/127.0.0.1","tag":"5140","content":"hello","timestamp":"07:32","username":"anonymous"}]}
+16-06-2026 07:40:26: 
+Connection reset
+16-06-2026 08:00:16: 
+message cache: [anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi]
+16-06-2026 08:00:16: 
+Socket closed
+16-06-2026 08:00:16: 
+json response: {"messages":[{"reciever":"0000","port":"64837","ip":"/127.0.0.1","tag":"4350","content":"hi","username":"anonymous","timestamp":"08:00"}]}
+16-06-2026 08:00:26: 
+message cache: [anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi, anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi]
+16-06-2026 08:00:26: 
+Socket closed
+16-06-2026 08:00:27: 
+json response: {"messages":[{"reciever":"0000","port":"64837","ip":"/127.0.0.1","tag":"4350","content":"hi","username":"anonymous","timestamp":"08:00"},{"reciever":"0000","port":"64837","ip":"/127.0.0.1","tag":"4350","content":"hi","username":"anonymous","timestamp":"08:00"}]}
+16-06-2026 08:00:31: 
+message cache: [anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi, anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi, anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hello]
+16-06-2026 08:00:31: 
+Socket closed
+16-06-2026 08:00:31: 
+json response: {"messages":[{"reciever":"0000","port":"64837","ip":"/127.0.0.1","tag":"4350","content":"hi","username":"anonymous","timestamp":"08:00"},{"reciever":"0000","port":"64837","ip":"/127.0.0.1","tag":"4350","content":"hi","username":"anonymous","timestamp":"08:00"},{"reciever":"0000","port":"64837","ip":"/127.0.0.1","tag":"4350","content":"hello","username":"anonymous","timestamp":"08:00"}]}
+16-06-2026 08:05:14: 
+Connection reset
+16-06-2026 08:11:52: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi]
+16-06-2026 08:11:53: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"}]}
+16-06-2026 08:11:57: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello]
+16-06-2026 08:11:57: 
+Socket closed
+16-06-2026 08:11:58: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"}]}
+16-06-2026 08:12:06: 
+Address already in use: bind
+16-06-2026 08:12:28: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?]
+16-06-2026 08:12:28: 
+Socket closed
+16-06-2026 08:12:28: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"}]}
+16-06-2026 08:12:28: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"}]}
+16-06-2026 08:12:41: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help]
+16-06-2026 08:12:41: 
+Socket closed
+16-06-2026 08:12:41: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"}]}
+16-06-2026 08:12:41: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"}]}
+16-06-2026 08:13:41: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid]
+16-06-2026 08:13:41: 
+Socket closed
+16-06-2026 08:13:42: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"}]}
+16-06-2026 08:13:42: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"}]}
+16-06-2026 08:13:54: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******]
+16-06-2026 08:13:54: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"}]}
+16-06-2026 08:13:54: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"}]}
+16-06-2026 08:14:47: 
+Address already in use: bind
+16-06-2026 08:14:47: 
+Address already in use: bind
+16-06-2026 08:15:02: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******, l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop]
+16-06-2026 08:15:02: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"}]}
+16-06-2026 08:15:02: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"}]}
+16-06-2026 08:15:03: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"}]}
+16-06-2026 08:15:45: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******, l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop, anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie]
+16-06-2026 08:15:45: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/msg 0503 oopsie","timestamp":"08:15","username":"anonymous"}]}
+16-06-2026 08:15:45: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/msg 0503 oopsie","timestamp":"08:15","username":"anonymous"}]}
+16-06-2026 08:15:45: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/msg 0503 oopsie","timestamp":"08:15","username":"anonymous"}]}
+16-06-2026 08:16:03: 
+message cache: [anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi, anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?, anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid, anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******, l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop, anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie, anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie]
+16-06-2026 08:16:03: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/msg 0503 oopsie","timestamp":"08:15","username":"anonymous"},{"port":"52780","reciever":"0503","ip":"/127.0.0.1","tag":"4292","content":"->0503: oopsie","timestamp":"08:16","username":"anonymous"}]}
+16-06-2026 08:16:03: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/msg 0503 oopsie","timestamp":"08:15","username":"anonymous"},{"port":"52780","reciever":"0503","ip":"/127.0.0.1","tag":"4292","content":"->0503: oopsie","timestamp":"08:16","username":"anonymous"}]}
+16-06-2026 08:16:04: 
+json response: {"messages":[{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hi","timestamp":"08:11","username":"anonymous"},{"port":"49670","reciever":"0000","ip":"/127.0.0.1","tag":"1685","content":"hello","timestamp":"08:11","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"?","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/help","timestamp":"08:12","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"stupid","timestamp":"08:13","username":"anonymous"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"******","timestamp":"08:13","username":"anonymous"},{"port":"55350","reciever":"0000","ip":"/127.0.0.1","tag":"0503","content":"oop","timestamp":"08:15","username":"l"},{"port":"52780","reciever":"0000","ip":"/127.0.0.1","tag":"4292","content":"/msg 0503 oopsie","timestamp":"08:15","username":"anonymous"},{"port":"52780","reciever":"0503","ip":"/127.0.0.1","tag":"4292","content":"->0503: oopsie","timestamp":"08:16","username":"anonymous"}]}
+16-06-2026 08:33:14: 
+Connection reset
+16-06-2026 08:33:14: 
+Connection reset
+16-06-2026 08:33:14: 
+Connection reset
+16-06-2026 08:33:15: 
+Connection reset
+16-06-2026 09:14:07: 
+Address already in use: bind
+16-06-2026 09:14:15: 
+Address already in use: bind
+16-06-2026 09:14:15: 
+Address already in use: bind
+16-06-2026 09:14:37: 
+json response: {"messages":[{"port":"64350","reciever":"0000","ip":"/127.0.0.1","tag":"5220","content":"a","timestamp":"09:14","username":"a"}]}
+16-06-2026 09:14:37: 
+json response: {"messages":[{"port":"64350","reciever":"0000","ip":"/127.0.0.1","tag":"5220","content":"a","timestamp":"09:14","username":"a"}]}
+16-06-2026 09:14:37: 
+json response: {"messages":[{"port":"64350","reciever":"0000","ip":"/127.0.0.1","tag":"5220","content":"a","timestamp":"09:14","username":"a"}]}
+16-06-2026 09:14:40: 
+json response: {"messages":[{"port":"64351","reciever":"0000","ip":"/127.0.0.1","tag":"6203","content":"b","timestamp":"09:14","username":"b"}]}
+16-06-2026 09:14:40: 
+Socket closed
+16-06-2026 09:14:40: 
+json response: {"messages":[{"port":"64351","reciever":"0000","ip":"/127.0.0.1","tag":"6203","content":"b","timestamp":"09:14","username":"b"}]}
+16-06-2026 09:14:41: 
+json response: {"messages":[{"port":"64351","reciever":"0000","ip":"/127.0.0.1","tag":"6203","content":"b","timestamp":"09:14","username":"b"}]}
+16-06-2026 09:14:43: 
+json response: {"messages":[{"port":"53206","reciever":"0000","ip":"/127.0.0.1","tag":"3892","content":"c","timestamp":"09:14","username":"c"}]}
+16-06-2026 09:14:43: 
+json response: {"messages":[{"port":"53206","reciever":"0000","ip":"/127.0.0.1","tag":"3892","content":"c","timestamp":"09:14","username":"c"}]}
+16-06-2026 09:14:44: 
+json response: {"messages":[{"port":"53206","reciever":"0000","ip":"/127.0.0.1","tag":"3892","content":"c","timestamp":"09:14","username":"c"}]}
+16-06-2026 09:14:47: 
+An established connection was aborted by the software in your host machine
+16-06-2026 09:15:52: 
+json response: {"messages":[{"port":"64350","reciever":"3892","ip":"/127.0.0.1","tag":"5220","content":"a","timestamp":"09:15","username":"a"}]}
+16-06-2026 09:26:21: 
+Connection reset
+16-06-2026 09:26:21: 
+Connection reset
+16-06-2026 09:26:21: 
+Connection reset
+16-06-2026 09:26:22: 
+Connection reset
+16-06-2026 09:26:22: 
+Connection reset
+16-06-2026 09:33:28: 
+Address already in use: bind
+16-06-2026 09:33:40: 
+Address already in use: bind
+16-06-2026 09:33:40: 
+Address already in use: bind
+16-06-2026 09:34:19: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"}]}
+16-06-2026 09:34:19: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"}]}
+16-06-2026 09:34:19: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"}]}
+16-06-2026 09:34:25: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"}]}
+16-06-2026 09:34:25: 
+Socket closed
+16-06-2026 09:34:25: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"}]}
+16-06-2026 09:34:26: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"}]}
+16-06-2026 09:34:30: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"}]}
+16-06-2026 09:34:30: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"}]}
+16-06-2026 09:34:30: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"}]}
+16-06-2026 09:36:38: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"},{"reciever":"9729","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"->#9729hey","username":"a","timestamp":"09:36"}]}
+16-06-2026 09:36:38: 
+json response: {"messages":[{"reciever":"0000","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"hi","username":"a","timestamp":"09:34"},{"reciever":"0000","port":"61028","ip":"/127.0.0.1","tag":"8172","content":"hi","username":"b","timestamp":"09:34"},{"reciever":"0000","port":"61029","ip":"/127.0.0.1","tag":"9729","content":"hi","username":"c","timestamp":"09:34"},{"reciever":"9729","port":"65534","ip":"/127.0.0.1","tag":"0854","content":"->#9729hey","username":"a","timestamp":"09:36"}]}
+16-06-2026 09:40:06: 
+Connection reset
+16-06-2026 09:40:06: 
+Connection reset
+16-06-2026 09:40:06: 
+Connection reset
+16-06-2026 09:40:06: 
+Connection reset
+16-06-2026 09:40:47: 
+Address already in use: bind
+16-06-2026 09:40:51: 
+Address already in use: bind
+16-06-2026 09:40:51: 
+Address already in use: bind
+16-06-2026 09:41:03: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"}]}
+16-06-2026 09:41:03: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"}]}
+16-06-2026 09:41:03: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"}]}
+16-06-2026 09:41:07: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"},{"port":"52249","reciever":"0000","ip":"/127.0.0.1","tag":"8060","content":"->#0000b","timestamp":"09:41","username":"b"}]}
+16-06-2026 09:41:07: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"},{"port":"52249","reciever":"0000","ip":"/127.0.0.1","tag":"8060","content":"->#0000b","timestamp":"09:41","username":"b"}]}
+16-06-2026 09:41:08: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"},{"port":"52249","reciever":"0000","ip":"/127.0.0.1","tag":"8060","content":"->#0000b","timestamp":"09:41","username":"b"}]}
+16-06-2026 09:41:11: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"},{"port":"52249","reciever":"0000","ip":"/127.0.0.1","tag":"8060","content":"->#0000b","timestamp":"09:41","username":"b"},{"port":"64010","reciever":"0000","ip":"/127.0.0.1","tag":"8770","content":"->#0000c","timestamp":"09:41","username":"c"}]}
+16-06-2026 09:41:11: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"},{"port":"52249","reciever":"0000","ip":"/127.0.0.1","tag":"8060","content":"->#0000b","timestamp":"09:41","username":"b"},{"port":"64010","reciever":"0000","ip":"/127.0.0.1","tag":"8770","content":"->#0000c","timestamp":"09:41","username":"c"}]}
+16-06-2026 09:41:11: 
+json response: {"messages":[{"port":"52248","reciever":"0000","ip":"/127.0.0.1","tag":"8509","content":"->#0000a","timestamp":"09:41","username":"a"},{"port":"52249","reciever":"0000","ip":"/127.0.0.1","tag":"8060","content":"->#0000b","timestamp":"09:41","username":"b"},{"port":"64010","reciever":"0000","ip":"/127.0.0.1","tag":"8770","content":"->#0000c","timestamp":"09:41","username":"c"}]}
+16-06-2026 09:41:22: 
+Connection reset
+16-06-2026 09:41:22: 
+Connection reset
+16-06-2026 09:41:22: 
+Connection reset
+16-06-2026 09:41:23: 
+Connection reset
+16-06-2026 09:42:44: 
+json response: {"messages":[{"port":"60946","reciever":"0000","ip":"/127.0.0.1","tag":"9004","content":"->#0000: hi","timestamp":"09:42","username":"a"}]}
+16-06-2026 09:43:06: 
+Connection reset
+16-06-2026 09:44:28: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"}]}
+16-06-2026 09:44:43: 
+Address already in use: bind
+16-06-2026 09:44:50: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"}]}
+16-06-2026 09:44:50: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"}]}
+16-06-2026 09:45:08: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"}]}
+16-06-2026 09:45:34: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"},{"reciever":"8153","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"->#8153: hi a","username":"b","timestamp":"09:45"}]}
+16-06-2026 09:45:34: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"},{"reciever":"8153","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"->#8153: hi a","username":"b","timestamp":"09:45"}]}
+16-06-2026 09:45:47: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"},{"reciever":"3158","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"->#3158: hello???","username":"a","timestamp":"09:45"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"wtf","username":"b","timestamp":"09:45"}]}
+16-06-2026 09:45:47: 
+json response: {"messages":[{"reciever":"0000","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"hi","username":"a","timestamp":"09:44"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"b","username":"b","timestamp":"09:44"},{"reciever":"3158","port":"51949","ip":"/127.0.0.1","tag":"8153","content":"->#3158: hello???","username":"a","timestamp":"09:45"},{"reciever":"0000","port":"49248","ip":"/127.0.0.1","tag":"3158","content":"wtf","username":"b","timestamp":"09:45"}]}
+16-06-2026 09:51:09: 
+Connection reset
+16-06-2026 09:51:09: 
+Connection reset
+16-06-2026 09:59:32: 
+Address already in use: bind
+16-06-2026 09:59:52: 
+Address already in use: bind
+16-06-2026 09:59:52: 
+Address already in use: bind
+16-06-2026 09:59:59: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"}]}
+16-06-2026 09:59:59: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"}]}
+16-06-2026 09:59:59: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"}]}
+16-06-2026 10:00:04: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"}]}
+16-06-2026 10:00:04: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"}]}
+16-06-2026 10:00:04: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"}]}
+16-06-2026 10:00:08: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"},{"receiver":"0000","port":"52991","ip":"/127.0.0.1","tag":"3010","content":"c","username":"c","timestamp":"10:00"}]}
+16-06-2026 10:00:08: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"},{"receiver":"0000","port":"52991","ip":"/127.0.0.1","tag":"3010","content":"c","username":"c","timestamp":"10:00"}]}
+16-06-2026 10:00:08: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"},{"receiver":"0000","port":"52991","ip":"/127.0.0.1","tag":"3010","content":"c","username":"c","timestamp":"10:00"}]}
+16-06-2026 10:00:23: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"},{"receiver":"0000","port":"52991","ip":"/127.0.0.1","tag":"3010","content":"c","username":"c","timestamp":"10:00"},{"receiver":"3010","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"hey","username":"a","timestamp":"10:00"}]}
+16-06-2026 10:00:24: 
+json response: {"messages":[{"receiver":"0000","port":"52626","ip":"/127.0.0.1","tag":"2060","content":"a","username":"a","timestamp":"09:59"},{"receiver":"0000","port":"53155","ip":"/127.0.0.1","tag":"7644","content":"b","username":"b","timestamp":"10:00"},{"receiver":"0000","port":"52991","ip":"/127.0.0.1","tag":"3010","content":"c","username":"c","timestamp":"10:00"}]}
+16-06-2026 10:04:28: 
+Connection reset
+16-06-2026 10:04:28: 
+Connection reset
+16-06-2026 10:04:28: 
+Connection reset
+16-06-2026 10:04:29: 
+Connection reset
+16-06-2026 10:04:59: 
+Address already in use: bind
+16-06-2026 10:05:03: 
+Address already in use: bind
+16-06-2026 10:05:03: 
+Address already in use: bind
+16-06-2026 10:05:09: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"}]}
+16-06-2026 10:05:09: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"}]}
+16-06-2026 10:05:09: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"}]}
+16-06-2026 10:05:13: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"}]}
+16-06-2026 10:05:13: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"}]}
+16-06-2026 10:05:13: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"}]}
+16-06-2026 10:05:16: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"},{"receiver":"0000","port":"61035","ip":"/127.0.0.1","tag":"7954","content":"c","username":"c","timestamp":"10:05"}]}
+16-06-2026 10:05:16: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"},{"receiver":"0000","port":"61035","ip":"/127.0.0.1","tag":"7954","content":"c","username":"c","timestamp":"10:05"}]}
+16-06-2026 10:05:16: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"},{"receiver":"0000","port":"61035","ip":"/127.0.0.1","tag":"7954","content":"c","username":"c","timestamp":"10:05"}]}
+16-06-2026 10:05:27: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"},{"receiver":"0000","port":"61035","ip":"/127.0.0.1","tag":"7954","content":"c","username":"c","timestamp":"10:05"},{"receiver":"1731","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"hey","username":"a","timestamp":"10:05"}]}
+16-06-2026 10:05:28: 
+json response: {"messages":[{"receiver":"0000","port":"61032","ip":"/127.0.0.1","tag":"0912","content":"a","username":"a","timestamp":"10:05"},{"receiver":"0000","port":"61034","ip":"/127.0.0.1","tag":"1731","content":"b","username":"b","timestamp":"10:05"},{"receiver":"0000","port":"61035","ip":"/127.0.0.1","tag":"7954","content":"c","username":"c","timestamp":"10:05"}]}
+16-06-2026 10:05:51: 
+Connection reset
+16-06-2026 10:05:51: 
+Connection reset
+16-06-2026 10:05:51: 
+Connection reset
+16-06-2026 10:05:51: 
+Connection reset
+16-06-2026 10:09:56: 
+Address already in use: bind
+16-06-2026 10:10:02: 
+json response: {"messages":[{"receiver":"0000","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"a","username":"a","timestamp":"10:10"}]}
+16-06-2026 10:10:02: 
+json response: {"messages":[{"receiver":"0000","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"a","username":"a","timestamp":"10:10"}]}
+16-06-2026 10:10:06: 
+json response: {"messages":[{"receiver":"0000","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"a","username":"a","timestamp":"10:10"},{"receiver":"0000","port":"62136","ip":"/127.0.0.1","tag":"8129","content":"b","username":"b","timestamp":"10:10"}]}
+16-06-2026 10:10:07: 
+json response: {"messages":[{"receiver":"0000","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"a","username":"a","timestamp":"10:10"},{"receiver":"0000","port":"62136","ip":"/127.0.0.1","tag":"8129","content":"b","username":"b","timestamp":"10:10"}]}
+16-06-2026 10:10:27: 
+json response: {"messages":[{"receiver":"0000","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"a","username":"a","timestamp":"10:10"},{"receiver":"0000","port":"62136","ip":"/127.0.0.1","tag":"8129","content":"b","username":"b","timestamp":"10:10"},{"receiver":"8129","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"hey","username":"a","timestamp":"10:10"}]}
+16-06-2026 10:10:27: 
+json response: {"messages":[{"receiver":"0000","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"a","username":"a","timestamp":"10:10"},{"receiver":"0000","port":"62136","ip":"/127.0.0.1","tag":"8129","content":"b","username":"b","timestamp":"10:10"},{"receiver":"8129","port":"54103","ip":"/127.0.0.1","tag":"9442","content":"hey","username":"a","timestamp":"10:10"}]}
+16-06-2026 10:11:07: 
+Connection reset
+16-06-2026 10:11:07: 
+Connection reset
+16-06-2026 10:11:07: 
+Connection reset
+16-06-2026 10:11:08: 
+Connection reset
+16-06-2026 10:11:08: 
+Connection reset
+16-06-2026 10:11:09: 
+Connection reset

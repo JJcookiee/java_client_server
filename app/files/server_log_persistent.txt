@@ -89,3 +89,341 @@ Number of Active Clients: 0
 Active Client logs:
 Message History:
 
+16-06-2026 07:30:51: 
+Server Log
+Server start: 07:30
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 07:32:05: 
+Server Log
+Server start: 07:32
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 07:37:05: 
+Server Log
+Server start: 07:32
+Up time: 00:05
+Number of Active Clients: 1
+Active Client logs:
+/127.0.0.1:51204
+  anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+  anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+  anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hello
+Message History:
+anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hello
+
+16-06-2026 07:58:55: 
+Server Log
+Server start: 07:58
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 08:03:55: 
+Server Log
+Server start: 07:58
+Up time: 00:05
+Number of Active Clients: 1
+Active Client logs:
+/127.0.0.1:64837
+  anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+  anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+  anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hello
+Message History:
+anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hi
+anonymous#4350 [08:00] (/127.0.0.1:64837) -> #0000: hello
+
+16-06-2026 08:11:38: 
+Server Log
+Server start: 08:11
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 08:16:38: 
+Server Log
+Server start: 08:11
+Up time: 00:05
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:52780
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+  anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+  anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+/127.0.0.1:55350
+  l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+/127.0.0.1:49670
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+Message History:
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+
+16-06-2026 08:21:38: 
+Server Log
+Server start: 08:11
+Up time: 00:10
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:52780
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+  anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+  anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+/127.0.0.1:55350
+  l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+/127.0.0.1:49670
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+Message History:
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+
+16-06-2026 08:26:38: 
+Server Log
+Server start: 08:11
+Up time: 00:15
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:52780
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+  anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+  anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+/127.0.0.1:55350
+  l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+/127.0.0.1:49670
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+Message History:
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+
+16-06-2026 08:31:38: 
+Server Log
+Server start: 08:11
+Up time: 00:20
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:52780
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+  anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+  anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+  anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+  anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+/127.0.0.1:55350
+  l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+/127.0.0.1:49670
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+  anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+Message History:
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hi
+anonymous#1685 [08:11] (/127.0.0.1:49670) -> #0000: hello
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: ?
+anonymous#4292 [08:12] (/127.0.0.1:52780) -> #0000: /help
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: stupid
+anonymous#4292 [08:13] (/127.0.0.1:52780) -> #0000: ******
+l#0503 [08:15] (/127.0.0.1:55350) -> #0000: oop
+anonymous#4292 [08:15] (/127.0.0.1:52780) -> #0000: /msg 0503 oopsie
+anonymous#4292 [08:16] (/127.0.0.1:52780) -> #0503: ->0503: oopsie
+
+16-06-2026 09:13:55: 
+Server Log
+Server start: 09:13
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 09:18:55: 
+Server Log
+Server start: 09:13
+Up time: 00:05
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:64351
+  b#6203 [09:14] (/127.0.0.1:64351) -> #0000: b
+/127.0.0.1:64350
+  a#5220 [09:14] (/127.0.0.1:64350) -> #0000: a
+  a#5220 [09:15] (/127.0.0.1:64350) -> #3892: a
+/127.0.0.1:53206
+  c#3892 [09:14] (/127.0.0.1:53206) -> #0000: c
+Message History:
+a#5220 [09:14] (/127.0.0.1:64350) -> #0000: a
+b#6203 [09:14] (/127.0.0.1:64351) -> #0000: b
+c#3892 [09:14] (/127.0.0.1:53206) -> #0000: c
+a#5220 [09:15] (/127.0.0.1:64350) -> #3892: a
+
+16-06-2026 09:23:55: 
+Server Log
+Server start: 09:13
+Up time: 00:10
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:64351
+  b#6203 [09:14] (/127.0.0.1:64351) -> #0000: b
+/127.0.0.1:64350
+  a#5220 [09:14] (/127.0.0.1:64350) -> #0000: a
+  a#5220 [09:15] (/127.0.0.1:64350) -> #3892: a
+/127.0.0.1:53206
+  c#3892 [09:14] (/127.0.0.1:53206) -> #0000: c
+Message History:
+a#5220 [09:14] (/127.0.0.1:64350) -> #0000: a
+b#6203 [09:14] (/127.0.0.1:64351) -> #0000: b
+c#3892 [09:14] (/127.0.0.1:53206) -> #0000: c
+a#5220 [09:15] (/127.0.0.1:64350) -> #3892: a
+
+16-06-2026 09:33:17: 
+Server Log
+Server start: 09:33
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 09:38:17: 
+Server Log
+Server start: 09:33
+Up time: 00:05
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:61029
+  c#9729 [09:34] (/127.0.0.1:61029) -> #0000: hi
+/127.0.0.1:61028
+  b#8172 [09:34] (/127.0.0.1:61028) -> #0000: hi
+/127.0.0.1:65534
+  a#0854 [09:34] (/127.0.0.1:65534) -> #0000: hi
+  a#0854 [09:36] (/127.0.0.1:65534) -> #9729: ->#9729hey
+Message History:
+a#0854 [09:34] (/127.0.0.1:65534) -> #0000: hi
+b#8172 [09:34] (/127.0.0.1:61028) -> #0000: hi
+c#9729 [09:34] (/127.0.0.1:61029) -> #0000: hi
+a#0854 [09:36] (/127.0.0.1:65534) -> #9729: ->#9729hey
+
+16-06-2026 09:40:33: 
+Server Log
+Server start: 09:40
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 09:42:35: 
+Server Log
+Server start: 09:42
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 09:44:21: 
+Server Log
+Server start: 09:44
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 09:49:21: 
+Server Log
+Server start: 09:44
+Up time: 00:05
+Number of Active Clients: 2
+Active Client logs:
+/127.0.0.1:51949
+  a#8153 [09:44] (/127.0.0.1:51949) -> #0000: hi
+  a#8153 [09:45] (/127.0.0.1:51949) -> #3158: ->#3158: hello???
+/127.0.0.1:49248
+  b#3158 [09:44] (/127.0.0.1:49248) -> #0000: b
+  b#3158 [09:45] (/127.0.0.1:49248) -> #8153: ->#8153: hi a
+  b#3158 [09:45] (/127.0.0.1:49248) -> #0000: wtf
+Message History:
+a#8153 [09:44] (/127.0.0.1:51949) -> #0000: hi
+b#3158 [09:44] (/127.0.0.1:49248) -> #0000: b
+b#3158 [09:45] (/127.0.0.1:49248) -> #8153: ->#8153: hi a
+a#8153 [09:45] (/127.0.0.1:51949) -> #3158: ->#3158: hello???
+b#3158 [09:45] (/127.0.0.1:49248) -> #0000: wtf
+
+16-06-2026 09:59:22: 
+Server Log
+Server start: 09:59
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 10:04:22: 
+Server Log
+Server start: 09:59
+Up time: 00:05
+Number of Active Clients: 3
+Active Client logs:
+/127.0.0.1:53155
+  b#7644 [10:00] (/127.0.0.1:53155) -> #0000: b
+/127.0.0.1:52626
+  a#2060 [09:59] (/127.0.0.1:52626) -> #0000: a
+  a#2060 [10:00] (/127.0.0.1:52626) -> #3010: hey
+/127.0.0.1:52991
+  c#3010 [10:00] (/127.0.0.1:52991) -> #0000: c
+Message History:
+a#2060 [09:59] (/127.0.0.1:52626) -> #0000: a
+b#7644 [10:00] (/127.0.0.1:53155) -> #0000: b
+c#3010 [10:00] (/127.0.0.1:52991) -> #0000: c
+a#2060 [10:00] (/127.0.0.1:52626) -> #3010: hey
+
+16-06-2026 10:04:48: 
+Server Log
+Server start: 10:04
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+
+16-06-2026 10:09:47: 
+Server Log
+Server start: 10:09
+Up time: 00:00
+Number of Active Clients: 0
+Active Client logs:
+Message History:
+

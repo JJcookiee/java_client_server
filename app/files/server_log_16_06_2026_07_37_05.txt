@@ -1,0 +1,14 @@
+Server Log
+Server start: 07:32
+Up time: 00:05
+Number of Active Clients: 1
+Active Client logs:
+/127.0.0.1:51204
+  anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+  anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+  anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hello
+Message History:
+anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hi
+anonymous#5140 [07:32] (/127.0.0.1:51204) -> #0000: hello
+

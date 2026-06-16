@@ -57,6 +57,7 @@ public class Client {
 
         UIPort = getBrowserPort();
         webHandler = new WebHandler(UIPort, this.username, this);
+        webHandler.setPage(this.username);
         try {
             webHandler.main(new String[0]);
         } catch (Exception e) {
@@ -88,20 +89,37 @@ public class Client {
     }
 
     /**
-     * outputs a message through the socket after checking for its intended reciever
+     * outputs a message through the socket after checking for its intended receiver
      * @param message the message string
      * @param isWhisper boolean. tags are added to the end of the message. to whisper add '````*tag*' to the end of a message. if not whispered it auto adds '0000' to send to all
+     * @version the old one?
      */
     public void sendMessage(String message, boolean isWhisper) {
-        if (!isWhisper) {
-            message = message + "````" + "0000";
-        }
+        String receiver = isWhisper ? "0000" : "0000";
 
-        message = username + ": " + message;
+        if (message.contains("->") && message.contains(":")) {
+
+            String[] parts = message.split(":", 2);
+            String targetPart = parts[0].trim();
+            if (targetPart.startsWith("->")) {
+                receiver = targetPart.substring(2);
+                message = parts[1].trim();
+            }
+        }
+        sendMessage(message, receiver);
+    }
+
+    /**
+     * sends a message to the rigth clients
+     * @param message the message
+     * @param receiver target audience
+     */
+    public void sendMessage(String message, String receiver) {
+        String formattedMessage = username + ": " + message + "````" + receiver;
 
         try {
             OutputStream out = toServer.getOutputStream();
-            out.write(message.getBytes());
+            out.write(formattedMessage.getBytes());
             out.flush();
         } catch (IOException e) {
             FileHandler.Debug(e.getMessage());

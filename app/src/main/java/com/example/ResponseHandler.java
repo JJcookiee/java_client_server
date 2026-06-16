@@ -1,6 +1,4 @@
 package com.example;
-import java.util.concurrent.TimeUnit;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,14 +30,16 @@ public class ResponseHandler implements Runnable {
         String lastResponse = null;
         while(true) {           
             try {
-                Thread.sleep(1000);
+
                 response = client.getPage();
 
                 if (response == null || response.isEmpty()) {
+                    Thread.sleep(500);
                     continue;
                 }
 
                 if (response.equals(lastResponse)) {
+                    Thread.sleep(500);
                     continue;
                 }
 
@@ -52,7 +52,7 @@ public class ResponseHandler implements Runnable {
                 }
                 
                 if (jsonBody.isEmpty() || !jsonBody.startsWith("{")) {
-                    FileHandler.Debug("Skipping non-JSON response: " + response.substring(0, Math.min(50, response.length())));
+                    Thread.sleep(500);
                     continue;
                 }
                 
@@ -60,15 +60,27 @@ public class ResponseHandler implements Runnable {
                 
                 JSONObject jsonResponse = new JSONObject(jsonBody);
                 FileHandler.Debug("json response: " + jsonResponse.toString());
+
                 client.webHandler.setPage(jsonResponse, client.username);
-            } catch (InterruptedException | JSONException e) {
-                FileHandler.Debug("Error parsing response(or interruption): " + response + e.getMessage());
-            }
-            try {
-                TimeUnit.SECONDS.sleep(1);
+
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
-                FileHandler.Debug("ResponseHandler interrupted, stopping thread." + e.getMessage());
+                FileHandler.Debug("Error parsing response(or interruption): " + response + e.getMessage());
                 break;
+            } catch (JSONException e) {
+                FileHandler.Debug("JSON parsing error: "+ e.getMessage());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    break;
+                }
+            } catch (Exception e) {
+                FileHandler.Debug("unexpected error: "+ e.getMessage());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    break;
+                }
             }
         }
     }
