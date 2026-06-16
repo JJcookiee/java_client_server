@@ -11,18 +11,33 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
+/**
+ * WebHandler class
+ */
 public class WebHandler implements HttpHandler {
     
     protected static int port = 8000;
     protected static PageConfig config = new PageConfig();
     protected static Client client;
 
+    /**
+     * WebHandler constructor
+     * @param port
+     * @param page
+     * @param client
+     */
     protected WebHandler(int port, String page, Client client) {
         this.port = port;
         this.config.setPage(page);
         this.client = client;
     }
 
+    /**
+     * WebHandler main
+     * has commented out function to open the browser for client ui
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", new WebHandler(port, config.getPage(), client));
@@ -36,10 +51,19 @@ public class WebHandler implements HttpHandler {
         // }
     }
 
+    /**
+     * WebHandler handle
+     * handles the client ui
+     * @param exchange
+     * @throws IOException
+     */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
 
+        /**
+         * outputs the change to the messages div only
+         */
         if (path.equals("/messages")) {
 
             String page = config.getPage();
@@ -64,6 +88,9 @@ public class WebHandler implements HttpHandler {
             return;
         }
 
+        /**
+         * Recieves input from ui POST form
+         */
         String method = exchange.getRequestMethod();
         if (method.equalsIgnoreCase("POST")) {
             String body = new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
@@ -99,6 +126,12 @@ public class WebHandler implements HttpHandler {
         }
     }
     
+    /**
+     * setPage
+     * creates the html for the client ui
+     * @param jsonResponse
+     * @param username
+     */
     public void setPage(JSONObject jsonResponse, String username) {
         StringBuilder page = new StringBuilder();
         page.append("<!DOCTYPE html>");
@@ -123,6 +156,9 @@ public class WebHandler implements HttpHandler {
             }
         }
 
+        /**
+         * embedded js so the messages can be updated, and refresh each second
+         */
         page.append("""
         <script>
         async function updateMessages() {

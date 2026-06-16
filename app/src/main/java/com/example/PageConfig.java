@@ -1,5 +1,9 @@
 package com.example;
 
+/**
+ * PageConfig class
+ * just gets and sets page
+ */
 public class PageConfig {
     private String page;
 

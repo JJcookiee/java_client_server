@@ -1,5 +1,8 @@
-    package com.example;
+package com.example;
 
+/**
+ * Message class
+ */
 public class Message {
     protected String content;
     protected String username;
@@ -9,6 +12,16 @@ public class Message {
     protected String ip;
     protected String reciever;
     
+    /**
+     * Message constructor
+     * @param content
+     * @param username
+     * @param tag
+     * @param timestamp
+     * @param port
+     * @param ip
+     * @param reciever
+     */
     public Message(String content, String username, String tag,String timestamp, String port, String ip, String reciever) {
         this.content = content;
         this.username = username;
@@ -27,6 +40,10 @@ public class Message {
     public String getIp() { return ip; }
     public String getReciever() { return reciever; }
 
+    /**
+     * toString
+     * converts message to formatted string
+     */
     @Override
     public String toString() {
         return username + "#" + tag + " [" + timestamp + "] (" + ip + ":" + port + ") -> #" + reciever + ": " + content;

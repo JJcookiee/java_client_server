@@ -7,9 +7,16 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+/**
+ * WordFilter class
+ */
 public class WordFilter {
     private Set<String> bannedWords = new HashSet<>();
 
+    /**
+     * WordFilter constructor
+     * Loads the banned words from file
+     */
     public WordFilter() {
         try (BufferedReader reader = new BufferedReader(new FileReader("files/banned_words.txt"))) {
             String line;
@@ -21,6 +28,12 @@ public class WordFilter {
         }
     }
 
+    /**
+     * censorMessage
+     * censors banned words from messages
+     * @param m
+     * @return cm
+     */
     public String censorMessage(String m) {
         String cm = m;
         for (String bannedWord : bannedWords) {

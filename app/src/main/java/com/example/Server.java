@@ -11,6 +11,9 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Server class
+ */
 public class Server {
     protected int serverPort = 8080;
     protected ServerSocket serverSocket = null;
@@ -25,13 +28,22 @@ public class Server {
     protected Logger logger = null;
     protected Scanner scanner;
 
+    /**
+     * Server constructor
+     * @param port
+     * @param scanner
+     */
     public Server(int port, Scanner scanner) {
         this.serverPort = port;
         this.scanner = scanner;
-
         this.threadPool.execute(new InputHandler(this));
     }
 
+    /**
+     * Server runnable
+     * Starts logger
+     * Starts serverRunnable thread for each client connected to the socket
+     */
     public void run(){
         synchronized(this){
             this.runningThread = Thread.currentThread();
@@ -65,10 +77,19 @@ public class Server {
         this.threadPool.shutdown();
     }
 
+    /**
+     * isStopped
+     * @return boolean isStopped
+     */
     private synchronized boolean isStopped() {
         return this.isStopped;
     }
 
+    /**
+     * stop
+     * Closes socket
+     * @exception IOExecption error closing server
+     */
     public synchronized void stop(){
         this.isStopped = true;
         try {
@@ -78,6 +99,11 @@ public class Server {
         }
     }
 
+    /**
+     * openServerSocket
+     * opens server socket
+     * @exception IOException cannot open port
+     */
     private void openServerSocket() {
         try {
             this.serverSocket = new ServerSocket(this.serverPort);
@@ -86,6 +112,12 @@ public class Server {
         }
     }
 
+    /**
+     * checkCommand
+     * checks a string for a command and arguments
+     * executes the command with tis arguments
+     * @param c
+     */
     public void checkCommand(String c) {
         String[] parts = c.split(" ", 2);
         String command = parts[0];

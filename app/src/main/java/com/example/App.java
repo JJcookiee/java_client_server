@@ -11,8 +11,14 @@ public final class App {
     private App() {
     }
 
+    /**default port is 8080 */
     public static int port = 8080;
+    /**8000 is a reserved port */
     public static List<String> reservedPorts = Arrays.asList("8000");
+    /**
+     * main
+     * @param args command line arguments - 'sever' to start the server as admin, no arguement starts the client
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int port = getPort(scanner);
@@ -34,10 +40,19 @@ public final class App {
         }
     }
 
+    /**
+     * getPort
+     * @param scanner scanner
+     * @return returns the port number
+     */
     public static int getPort(Scanner scanner) {
         System.out.print("Enter port number:");
         String portScan = scanner.nextLine();
 
+        /**
+         * default port is 8080
+         * 8000 is reserved
+         */
         if (portScan.isEmpty()) {
             System.out.println("\rUsing default port: " + port);
         } else if(Arrays.asList(reservedPorts).contains(portScan)) {
@@ -50,6 +65,11 @@ public final class App {
         return port;
     }
 
+    /**
+     * Username input
+     * @param scanner scanner
+     * @return returns the username
+     */
     public static String getUser(Scanner scanner) {
         System.out.print("Enter username:");
         String userScan = scanner.nextLine();

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * ServerLog class
+ */
 public class ServerLog {
     protected String timestamp;
     protected List<Client> ClientList = new ArrayList<>();
@@ -13,6 +17,12 @@ public class ServerLog {
     protected ArrayList<Message> messageHistory;
     protected ArrayList<Socket> clientSockets;
 
+    /**
+     * ServerLog constructor
+     * @param timestamp
+     * @param messageHistory
+     * @param clientSockets
+     */
     public ServerLog(String timestamp, ArrayList<Message> messageHistory, ArrayList<Socket> clientSockets) {
         this.timestamp = timestamp;
         this.messageHistory = messageHistory;
@@ -26,6 +36,10 @@ public class ServerLog {
     protected void setTimestamp(String timestamp) { this.timestamp = timestamp; }
     protected void addClient(Client client) { ClientList.add(client); }
 
+    /**
+     * sortClients
+     * Connects active clients to the messages theyve sent
+     */
     public void sortClients() {
         ActiveClients.clear();
         for (Message msg : messageHistory) {
@@ -36,6 +50,11 @@ public class ServerLog {
         }
     }
 
+    /**
+     * getHTML
+     * gets the current serverLog as html
+     * @return html
+     */
     public String getHTML() {
         sortClients();
         StringBuilder html = new StringBuilder();
@@ -58,15 +77,21 @@ public class ServerLog {
         return html.toString();
     }
 
+    /**
+     * getString
+     * gets the current serverLog as a string
+     * @return string
+     */
     public String getString() {
         StringBuilder str = new StringBuilder();
         try {
             sortClients();
             LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
-            Duration upTime = Duration.between(LocalTime.parse(timestamp), time).truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+            Duration duration = Duration.between(LocalTime.parse(timestamp), time).truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
+            String upTime = String.format("%02d:%02d", duration.toHours(), duration.toMinutesPart());
             str.append("Server Log\n");
             str.append("Server start: ").append(timestamp).append("\n");
-            str.append("Up time: ").append(upTime.toString()).append("\n");
+            str.append("Up time: ").append(upTime).append("\n");
             str.append("Number of Active Clients: ").append(ActiveClients.size()).append("\n");
             str.append("Active Client logs:\n");
             for (Map.Entry<String, List<Message>> entry : ActiveClients.entrySet()) {
@@ -81,7 +106,6 @@ public class ServerLog {
             }
         } catch (Exception e) {
             FileHandler.Debug("Error in getString: " + e.getMessage());
-            e.printStackTrace();
         }
         return str.toString();
     }

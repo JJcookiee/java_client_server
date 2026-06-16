@@ -10,6 +10,9 @@ import java.util.Random;
 
 import org.json.JSONObject;
 
+/**
+ * ServerRunnable class
+ */
 public class ServerRunnable implements Runnable {
     protected Socket clientSocket = null;
     protected ArrayList<Message> messageCache = null;
@@ -18,6 +21,14 @@ public class ServerRunnable implements Runnable {
     protected ArrayList<OutputStream> clientOutputStreams = null;
     protected ServerLog serverLog = null;
 
+    /**
+     * ServerRunnable constructor
+     * @param clientSocket
+     * @param messageCache
+     * @param clientTags
+     * @param clientOutputStreams
+     * @param serverLog
+     */
     public ServerRunnable(Socket clientSocket, ArrayList<Message> messageCache, ArrayList<String> clientTags, ArrayList<OutputStream> clientOutputStreams, ServerLog serverLog) {
         this.clientSocket = clientSocket;
         this.messageCache = messageCache;
@@ -26,6 +37,10 @@ public class ServerRunnable implements Runnable {
         this.serverLog = serverLog;
     }
 
+    /**
+     * ServerRunnable runnable
+     * Deals with input and output of server
+     */
     @Override
     public void run() {
         try {     
@@ -38,6 +53,10 @@ public class ServerRunnable implements Runnable {
 
             clientTag = getClientTag();
             
+            /**
+             * Main loop
+             * Reads input and decides how to respond
+             */
             while (true) {
                 byte[] buffer = new byte[1024];
                 int bytesRead = input.read(buffer);
@@ -49,7 +68,13 @@ public class ServerRunnable implements Runnable {
                 String textMessage = new String(buffer, 0, bytesRead).trim();
                 LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.MINUTES);
 
+                /**
+                 * Filters between browser input and client input
+                 */
                 if(textMessage.startsWith("GET ") || textMessage.startsWith("POST ")) {
+                    /**
+                     * outputs html for server ui
+                     */
                     StringBuilder page = new StringBuilder();
                     page.append("<html><body>");
                     page.append("<p>Server is running.</p>");
@@ -66,6 +91,9 @@ public class ServerRunnable implements Runnable {
                     output.write(body);
                     output.flush();
                 } else {
+                    /**
+                     * parses message from client
+                     */
                     String[] parts = textMessage.split(": ", 2);
                     String username = parts[0];
                     String[] messageParts = parts[1].split("````", 2);
@@ -87,6 +115,9 @@ public class ServerRunnable implements Runnable {
                     String responseBody = jsonResponse.toString();
                     byte[] body = responseBody.getBytes();
                     
+                    /**
+                     * Sends all clients the messageCache as a JSON
+                     */
                     synchronized(clientOutputStreams) {
                         ArrayList<OutputStream> streamsToRemove = new ArrayList<>();
                         for (OutputStream out : clientOutputStreams) {
@@ -109,10 +140,7 @@ public class ServerRunnable implements Runnable {
                         }
                     }
                 }
-                // System.out.println(textMessage);
-                // System.out.println("Sent response: " + responseBody);
-            }
-            
+            }          
             input.close();
             output.close();
             clientSocket.close();
@@ -121,6 +149,12 @@ public class ServerRunnable implements Runnable {
         }
     }
     
+    /**
+     * getClientCache
+     * sorts which messages teh client should be able to see
+     * @param clientTag
+     * @return
+     */
     public ArrayList<Message> getClientCache(String clientTag) {
         ArrayList<Message> clientMessageCache = new ArrayList<>();
         for (Message msg : messageCache) {
@@ -131,6 +165,10 @@ public class ServerRunnable implements Runnable {
         return clientMessageCache;
     }
 
+    /**
+     * getClientTag
+     * @return clientTag
+     */
     public String getClientTag() {
         if (clientTag.equals("0000")) {
             clientTag = setClientTag();
@@ -138,6 +176,11 @@ public class ServerRunnable implements Runnable {
         return clientTag;
     }
 
+    /**
+     * setClientTag
+     * creates new random tag 0001-9999
+     * @return clientTag
+     */
     public String setClientTag() {
         Random rand = new Random();
         int tag = rand.nextInt(10000);

@@ -1,18 +1,33 @@
 package com.example;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/**
+ * ResponseHandler class
+ */
 public class ResponseHandler implements Runnable {
     protected Client client;
     protected String response;
 
+    /**
+     * ResponseHandler constructor
+     * @param client
+     * @param response
+     */
     public ResponseHandler(Client client, String response) {
         this.client = client;
         this.response = response;
     }
 
+    /**
+     * ResponseHandler runnable
+     * Responds to JSON messages
+     * @exception InterruptedExecption thread interrupted
+     * @exception JSONExecption cannot parse resposne
+     */
+    @Override
     public void run() {
         String lastResponse = null;
         while(true) {           
@@ -46,7 +61,7 @@ public class ResponseHandler implements Runnable {
                 JSONObject jsonResponse = new JSONObject(jsonBody);
                 FileHandler.Debug("json response: " + jsonResponse.toString());
                 client.webHandler.setPage(jsonResponse, client.username);
-            } catch (Exception e) {
+            } catch (InterruptedException | JSONException e) {
                 FileHandler.Debug("Error parsing response(or interruption): " + response + e.getMessage());
             }
             try {
